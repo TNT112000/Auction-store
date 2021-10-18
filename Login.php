@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <script src="../JS/main.js"></script>
+    <script src="JS/main.js"></script>
     <div class="main">
         <?php
         include 'header.php';
