@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +17,11 @@
         <?php
         include 'header.php'
         ?>
+        <style>
+            label {
+                width: 150px !important;
+            }
+        </style>
         <div class="content-log">
             <div class="wide grid">
                 <p class="title-1">
@@ -33,7 +36,7 @@
 
                     include 'config.php';
 
-                    $sql = "SELECT * FROM  nguoidung WHERE nguoidung_email='$email' ";
+                    $sql = "SELECT * FROM  users WHERE user_email='$email' ";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
@@ -43,7 +46,7 @@
                             echo '<p class="title-ok">Mật khẩu nhập lại không đúng</p>';
                         } else {
                             if ($user != '' && $email != '' && $pass1 != '') {
-                                $sql = "INSERT INTO nguoidung (nguoidung_name,nguoidung_email,nguoidung_pass)
+                                $sql = "INSERT INTO users (user_name,user_email,user_password)
                                 VALUE (' $user','$email',' $pass1')";
                                 $result = mysqli_query($conn, $sql);
                                 if ($result > 0) {
@@ -70,4 +73,5 @@
         </div>
     </div>
 </body>
+
 </html>

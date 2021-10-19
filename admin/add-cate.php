@@ -62,8 +62,8 @@ VALUE ('$edit_category_img','$category_id')";
                     </div>
                     <div class="box-add">
                         <label class="content-title-add">Tên danh mục </label>
-                        <select class="select-add" name="category">
-                            <!-- Lấy dữ liệu từ bảng Office -->
+                        <input type="text" name="category" class="input-add" list="datalist" autocomplete="off">
+                        <datalist id="datalist" class="select-add" >
                             <?php
                             $sql = "SELECT * FROM list_category";
                             $result = mysqli_query($conn, $sql);
@@ -73,7 +73,7 @@ VALUE ('$edit_category_img','$category_id')";
                                 }
                             }
                             ?>
-                        </select>
+                        </datalist>
                     </div>
                     <div class="box-add">
                         <button class="btn-add" type="submit" name="them">Lưu lại</button>

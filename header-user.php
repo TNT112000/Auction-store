@@ -2,7 +2,7 @@
             <div class="navbar">
                 <div class="wide grid">
                     <div class="navbar-item">
-                        <a href="#" class="logo">BestBook <span class="logo-item">STORE<span></a>
+                        <a href="#" class="logo">Auction <span class="logo-item">STORE<span></a>
                         <div class="navbar-menu">
                             <ul class="navbar-menu-list">
                                 <li class="navbar-menu-item">

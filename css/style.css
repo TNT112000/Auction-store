@@ -1,4 +1,7 @@
 /* header */
+.header-icon-img{
+    width: 80px;
+}
 
 .navbar{
     background-color: var(--secondary--color);
@@ -399,7 +402,7 @@
 }
 
 .title-ok{
-    animation: tnt 4s linear ;
+    animation: tnt 5s linear ;
     color: var(--secondary--color);
     font-size: 25px;
     margin-top: 20px;
@@ -445,4 +448,7 @@
 .input-log{
     width: 300px;
     height: 30px;
+}
+datalist#datalist option[value] {
+    display: none;
 }

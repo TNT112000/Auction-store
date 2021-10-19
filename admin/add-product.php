@@ -77,8 +77,8 @@ VALUE ('$book_img','$book_name','$category_id','$book_thickness','$book_title','
                     </div>
                     <div class="box-product-add">
                         <label class="content-title-add">Tên danh mục </label>
-                        <select class="select-add" name="category">
-                            <!-- Lấy dữ liệu từ bảng Office -->
+                        <input type="text" name="category" class="input-add" list="datalist" autocomplete="off">
+                        <datalist id="datalist" class="select-add" >
                             <?php
                             $sql = "SELECT * FROM list_category";
                             $result = mysqli_query($conn, $sql);
@@ -88,7 +88,7 @@ VALUE ('$book_img','$book_name','$category_id','$book_thickness','$book_title','
                                 }
                             }
                             ?>
-                        </select>
+                        </datalist>
                     </div>
                     <div class="box-product-add">
                         <label class="content-title-add">Số trang</label>

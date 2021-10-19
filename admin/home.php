@@ -1,8 +1,9 @@
 <?php
 session_start(); //Dịch vụ bảo vệ
 if (!isset($_SESSION['loginOK'])) {
-    header("Location:index.php");
+    header("Location:../index.php");
 }
+
 ?>
 
 <!DOCTYPE html>

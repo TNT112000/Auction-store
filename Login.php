@@ -16,7 +16,7 @@
     <script src="JS/main.js"></script>
     <div class="main">
         <?php
-        include 'header.php';
+        include 'header.php'
         ?>
         <div class="content-log">
             <div class="wide grid">
@@ -24,36 +24,51 @@
                     Đăng nhập
                 </p>
                 <?php
-                    session_start();
-                    include 'config.php';
-                    if (isset($_POST["login"])) {
-                        // lấy thông tin người dùng
-                        $username = $_POST["txtEmail"];
-                        $password = $_POST["txtPass"];
-                        //làm sạch thông tin, xóa bỏ các tag html, ký tự đặc biệt 
-                        //mà người dùng cố tình thêm vào để tấn công theo phương thức sql injection
-                        if ($username == "" || $password == "") {
-                            echo '<p class="title-ok">Chưa nhập đầy đủ thông tin</p>';
-                        } else {
-                            $sql = "SELECT * from nguoidung where nguoidung_email = '$username' and nguoidung_pass = '$password' ";
-                            $query = mysqli_query($conn, $sql);
-                            $num_rows = mysqli_num_rows($query);
-                            if ($num_rows == 0) {
-                                echo '<p class="title-ok">Đăng nhập thất bại</p>';
+                // Dịch vụ bảo vệ:
+                session_start(); //Công ty dịch vụ Bảo vệ
+
+                if (isset($_POST['sbmGuiDi'])) {
+                    $email = $_POST['txtEmail'];
+                    $password = $_POST['txtPass'];
+
+                    // Bước 01: Kết nối DB Server
+                    $conn = mysqli_connect('localhost', 'root', '', 'bestbook-store');
+                    if (!$conn) {
+                        die("Không thể kết nối");
+                    }
+
+                    // Bước 02: Truy vấn thông tin
+                    if ($email == "" || $password == "") {
+                        echo '<p class="title-ok">Chưa nhập đầy đủ thông tin</p>';
+                    } else {
+                        $sql = "SELECT * FROM users WHERE  user_email='$email' AND user_password='$password'";
+                        $query = mysqli_query($conn, $sql);
+                        // Bước 03: Xác thực > Đăng nhập > Ở trên, trả về 1 bản ghi thôi
+                        if (($email == "admin@gmail.com") && ($password == "admin0972612200")) {
+                            if (mysqli_num_rows($query) > 0) {
+                                // Bảo vệ cửa CHÍNH: kiểm tra xác thực
+                                $_SESSION['loginOK'] = $email;
+                                header("Location: admin/home.php");
                             } else {
-                                //tiến hành lưu tên đăng nhập vào session để tiện xử lý sau này
-                                $_SESSION['nguoidung_eamil'] = $username;
-                                // Thực thi hành động sau khi lưu thông tin vào session
-                                // ở đây mình tiến hành chuyển hướng trang web tới một trang gọi là index.php
-                                header('Location: user-index.php');
+                                echo '<p class="title-ok">Đăng nhập thất bại</p>';
+                            }
+                        } else {
+                            if (mysqli_num_rows($query) > 0) {
+                                // Bảo vệ cửa CHÍNH: kiểm tra xác thực
+                                $_SESSION['loginOK'] = $email;
+                                header("Location: user-index.php");
+                            } else {
+                                echo '<p class="title-ok">Đăng nhập thất bại</p>';
                             }
                         }
                     }
-                    ?>
-                <form action="Login.php" method="POST" class="form_log">
+                }
+                ?>
+
+                <form action="" method="POST" class="form_log">
                     <label class="title_log">Email </label> <input class="input-log" type="email" name="txtEmail"><br><br>
                     <label class="title_log">Mật khẩu</label> <input class="input-log" type="password" name="txtPass"><br><br>
-                    <button type="submit" name="login" class="btn-log">Đăng nhập</button>
+                    <button type="submit" name="sbmGuiDi" class="btn-log">Đăng nhập</button>
                 </form>
             </div>
         </div>

@@ -12,6 +12,11 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 
+$sql = "SELECT l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,c.category_name	FROM list_book l, list_category c
+                WHERE l.category_id=c.category_id and l.book_id=$id ";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($result) ;
+
 if (isset($_POST["sua"])) {
     $book_img = $_FILES['bookImg']['name'];
     $book_name = $_POST['bookName'];
@@ -19,11 +24,24 @@ if (isset($_POST["sua"])) {
     $book_thickness = $_POST['bookThickness'];
     $book_rice = $_POST['bookRice'];
 
+    if($_FILES['bookImg']['name']==''){
+        $book_img=$row['book_img'];
+    }
+    else{
+        $book_img = $_FILES['bookImg']['name'];
+    }
+
+    if($_POST['category']==''){
+        $category_id = $row['category_id'];
+    }
+    else{
+        $category_id = $_POST['category'];
+    }
+
     if ($book_img != '' && $book_name != '' && $category_id != '' && $book_thickness != '' && $book_rice != '') {
         $sql = "UPDATE list_book SET book_img='$book_img' , book_name='$book_name',category_id='$category_id',book_thickness='$book_thickness',book_rice='$book_rice'  
         WHERE book_id=$id ";
 
-        echo $sql;
         $result = mysqli_query($conn, $sql);
         if ($result > 0) {
             header("location: product-index.php");
@@ -34,9 +52,7 @@ if (isset($_POST["sua"])) {
 
     mysqli_close($conn);
 }
-$sql = "SELECT * FROM list_book WHERE book_id=$id ";
-$query = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($query);
+
 ?>
 
 <!DOCTYPE html>
@@ -62,38 +78,41 @@ $row = mysqli_fetch_assoc($query);
         <div class="content-add">
             <div class="grid wide">
                 <p class="title-add">Chỉnh sửa sản phẩm</p>
-                <form class="form" action="add-product-process.php" method="post" enctype="multipart/form-data">
+                <form class="form" action="" method="post" enctype="multipart/form-data">
                     <div class="box-product-add">
                         <label class="content-title-add">Chọn hình ảnh</label>
-                        <input type="file" class="input-add" name="bookImg" value="<?php echo $row['book_img']; ?>">
+                        <input type="file" class="input-add" name="bookImg" value="<?php echo $row['book_img'] ?>">
                     </div>
                     <div class="box-product-add">
                         <label class="content-title-add">Tên sách</label>
-                        <input type="text" class="input-add" name="bookName" value="<?php echo $row['book_name']; ?>">
+                        <input type="text" class="input-add" name="bookName" value="<?php echo $row['book_name'] ?>">
                     </div>
                     <div class="box-product-add">
                         <label class="content-title-add">Tên danh mục </label>
-                        <select class="select-add" name="category">
-                            <!-- Lấy dữ liệu từ bảng Office -->
+                        <input list="datalist" type="text" class="input-add" name="category" autocomplete="off">
+                        <datalist class="select-add" id="datalist">
                             <?php
                             $sql = "SELECT * FROM list_category";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result)) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo '<option  value="' . $row['category_id'] . '">' . $row['category_name'] . '</option>';
+                                    echo '<option  value="' . $row['category_id'] . '">'. $row['category_name'].'</option>';
                                 }
                             }
                             ?>
-                        </select>
+                        </datalist>
                     </div>
                     <div class="box-product-add">
                         <label class="content-title-add">Số trang</label>
-                        <input type="text" class="input-add" name="bookThickness" value="<?php echo $row['book_thickness']; ?>">
+                        <input type="text" class="input-add" name="bookThickness" value="<?php echo $row['book_thickness'] ?>">
                     </div>
                     <div class="box-product-add">
                         <label class="content-title-add">Gía tiền</label>
-                        <input type="text" class="input-add" name="bookRice" value="<?php echo $row['book_rice']; ?>">
+                        <input type="text" class="input-add" name="bookRice" value="<?php echo $row['book_rice'] ?>">
                     </div>
+                    <?php
+                    var_dump($row['book_rice']);
+                    ?>
                     <div class="box-product-add">
                         <button class="btn-add" type="submit" name="sua">Lưu lại</button>
                     </div>
