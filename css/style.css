@@ -287,7 +287,7 @@
     font-size: 17px;
     width: 100%;
     height: 38px;
-    word-wrap:break-word
+    word-wrap:break-word;
 }
 .product-book-item{
     display: flex;
@@ -395,11 +395,6 @@
     color:var(--main--color);
 }
 
-/* details */
-
-.content-details{
-    background-color:#f1f1f1 ;
-}
 
 .title-ok{
     animation: tnt 5s linear ;
@@ -451,4 +446,139 @@
 }
 datalist#datalist option[value] {
     display: none;
+}
+
+/* product-details */
+
+.details-img{
+    width: 100%;
+    height: 500px;
+}
+.content-details{
+    background-color:#f1f1f1 ;
+    padding: 100px 0 150px 0;
+}
+.details-img-name{
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color:var(--main--color);
+    font-weight: 700;
+    margin: 20px 0 15px 0;
+    font-size: 25px;
+    width: 100%;
+    height: 58px;
+    word-wrap: break-word;
+}
+
+.content-item{
+    font-size: 20px;
+    padding: 10px 0 10px 0;
+    color:var(--main--color);
+}
+.content-red{
+    font-size: 25px;
+    padding: 8px 0 8px 0;
+    color:var(--auction--color);
+}
+.btn-content-auction{
+    font-size: 20px;
+    font-weight: 700;
+    background-color: var(--auction--color);
+    color: var(--secondary--color);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px 10px 20px;
+    margin-top: 15px;
+}
+.content-auction{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.content-red-title{
+    font-size: 25px;
+    padding: 15px 0 15px 0;
+    color:var(--auction--color);
+    font-weight: 700;
+}
+#table-rice{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.content-details-box{
+    position: relative;
+}
+
+.form-rice{
+    margin-top: 50px;
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+}
+.input-rice{
+    width: 173px;
+    height: 40px;
+    font-size: 18px;
+}
+
+.product-details-title{
+    height: 147.2px;
+    line-height: 18.4px;
+    overflow: hidden;
+    display:-webkit-box;
+    -webkit-box-orient:vertical ;
+    -webkit-line-clamp:8 ;
+}
+
+/* user_list */
+.click-user_list{
+    position: relative;
+    list-style: none;
+    text-align: center;
+}
+.header-user:hover  .user_list{
+    display: block ;
+}
+
+.user_list{
+    position: absolute;
+    top:55px;
+    z-index: 10;
+    background-color: var(--secondary--color);
+    display: none;
+}
+.user_list-item{
+    width: 110px;
+}
+
+
+.user_list-item:hover{
+    background-color: orange;
+}
+
+.user_list-item:hover .navbar-menu-link-item{
+    color:var(--secondary--color)
+}
+
+.time-auction{
+    color:var(--auction--color);
+    font-size: 32px;
+    font-weight: 700;
+    width: 100%;
+}
+.product-book-rice-close{
+    display: none;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    background-color: #999;
+    color:var(--secondary--color);
+    text-align: center;
 }

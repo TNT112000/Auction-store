@@ -4,6 +4,7 @@
     if(!isset($_SESSION['loginOK'])){
         header("Location:../index.php");
     }
+    include '../config.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
 <script src="../JS/main.js"></script>
     <div class="main">
         <?php
-         include '../header-ad.php';
+         include 'header.php';
         ?>
 
         <style>
@@ -42,7 +43,7 @@
                     <div class="content-category-product">
                         <div class="row">
                             <?php
-                            include '../config.php';
+                            
                             $sql = "SELECT c.edit_category_id,c.edit_category_img,l.category_name FROM edit_category c, list_category l
                                     WHERE c.category_id=l.category_id";
                             $result = mysqli_query($conn, $sql);

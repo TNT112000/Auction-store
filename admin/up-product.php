@@ -3,20 +3,22 @@ session_start(); //Dịch vụ bảo vệ
 if (!isset($_SESSION['loginOK'])) {
     header("Location:../index.php");
 }
+include '../config.php';
 ?>
 
 <?php
-include '../config.php';
+
 
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+$id= $_GET['id'];
 }
 
 $sql = "SELECT l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,c.category_name	FROM list_book l, list_category c
                 WHERE l.category_id=c.category_id and l.book_id=$id ";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result) ;
-
+                    if (mysqli_num_rows($result) > 0){
+                        
 if (isset($_POST["sua"])) {
     $book_img = $_FILES['bookImg']['name'];
     $book_name = $_POST['bookName'];
@@ -52,7 +54,7 @@ if (isset($_POST["sua"])) {
 
     mysqli_close($conn);
 }
-
+                    }
 ?>
 
 <!DOCTYPE html>
@@ -73,25 +75,39 @@ if (isset($_POST["sua"])) {
     <script src="../JS/main.js"></script>
     <div class="main">
         <?php
-        include '../header-ad.php';
+        include 'header.php';
         ?>
         <div class="content-add">
             <div class="grid wide">
                 <p class="title-add">Chỉnh sửa sản phẩm</p>
-                <form class="form" action="" method="post" enctype="multipart/form-data">
+                <?php
+                $sql = "SELECT l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,c.category_name	FROM list_book l, list_category c
+                WHERE l.category_id=c.category_id and l.book_id=$id ";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($result) ;
+                    if (mysqli_num_rows($result) > 0){
+                echo '<form class="form" action="" method="post" enctype="multipart/form-data">
                     <div class="box-product-add">
                         <label class="content-title-add">Chọn hình ảnh</label>
-                        <input type="file" class="input-add" name="bookImg" value="<?php echo $row['book_img'] ?>">
+                        <input type="file" class="input-add" name="bookImg" value="'. $row['book_img'] .'">
                     </div>
                     <div class="box-product-add">
                         <label class="content-title-add">Tên sách</label>
-                        <input type="text" class="input-add" name="bookName" value="<?php echo $row['book_name'] ?>">
+                        <input type="text" class="input-add" name="bookName" value="'. $row['book_name'] .'">
+                    </div>
+                    <div class="box-product-add">
+                        <label class="content-title-add">Số trang</label>
+                        <input type="text" class="input-add" name="bookThickness" value="'. $row['book_thickness'] .'">
+                    </div>
+                    <div class="box-product-add">
+                        <label class="content-title-add">Gía tiền</label>
+                        <input type="text" class="input-add" name="bookRice" value="'. $row['book_rice'] .'">
                     </div>
                     <div class="box-product-add">
                         <label class="content-title-add">Tên danh mục </label>
                         <input list="datalist" type="text" class="input-add" name="category" autocomplete="off">
-                        <datalist class="select-add" id="datalist">
-                            <?php
+                        <datalist class="select-add" id="datalist">';
+        
                             $sql = "SELECT * FROM list_category";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result)) {
@@ -99,24 +115,16 @@ if (isset($_POST["sua"])) {
                                     echo '<option  value="' . $row['category_id'] . '">'. $row['category_name'].'</option>';
                                 }
                             }
-                            ?>
-                        </datalist>
+
+                    echo'</datalist>
                     </div>
-                    <div class="box-product-add">
-                        <label class="content-title-add">Số trang</label>
-                        <input type="text" class="input-add" name="bookThickness" value="<?php echo $row['book_thickness'] ?>">
-                    </div>
-                    <div class="box-product-add">
-                        <label class="content-title-add">Gía tiền</label>
-                        <input type="text" class="input-add" name="bookRice" value="<?php echo $row['book_rice'] ?>">
-                    </div>
-                    <?php
-                    var_dump($row['book_rice']);
-                    ?>
                     <div class="box-product-add">
                         <button class="btn-add" type="submit" name="sua">Lưu lại</button>
                     </div>
-                </form>
+                
+                </form>';}
+                ?>
+                
             </div>
         </div>
     </div>

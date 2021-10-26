@@ -6,6 +6,7 @@
 :root{
     --main--color:#099645;
     --secondary--color:white;
+    --auction--color:red;
 }
 html{
     font-family: Arial, Helvetica, sans-serif;

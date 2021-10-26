@@ -3,7 +3,7 @@ session_start(); //Dịch vụ bảo vệ
 if (!isset($_SESSION['loginOK'])) {
     header("Location:../index.php");
 }
-
+include '../config.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ if (!isset($_SESSION['loginOK'])) {
 <script src="../JS/main.js"></script>
 <div class="main">
 <?php
-include '../header-ad.php';
+include 'header.php';
 ?>
     <style>
         .content{

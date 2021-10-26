@@ -1,9 +1,9 @@
 <div class="slider">
-    <img class="slider-img-item" src="https://viettranslation.com.vn/images/nhung-quyen-sach-hay-nhat-ve-dich-thuat.jpg" alt="">
+    <img class="slider-img-item" src="image/cate-img/icon.png" alt="">
     <div class="slider-text1">
-        <p class="slider-text-del">Sách là chi thức của nhân loại</p>
+        <p class="slider-text-del">Cùng đấu giá nhận quà liền tay</p>
     </div>
     <div class="slider-text2">
-        <a class="slider-text-go">MUA NGAY<a>
+        <a class="slider-text-go">ĐẤU GIÁ<a>
     </div>
 </div>

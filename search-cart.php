@@ -8,7 +8,7 @@
                 </button>
             </div>
             <a href="" class="cart">
-                <img src="image/auction-img/icon.png" alt="" class="header-icon-img">
+                <img src="image/auction-img/img_79668.png" alt="" class="header-icon-img">
             </a>
         </div>
     </div>

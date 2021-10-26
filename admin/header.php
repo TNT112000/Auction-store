@@ -6,7 +6,7 @@
                 <div class="navbar-menu">
                     <ul class="navbar-menu-list">
                         <li class="navbar-menu-item">
-                            <a href="index.php" class="navbar-menu-link">Trang chủ</a>
+                            <a href="../index.php" class="navbar-menu-link">Trang chủ</a>
                         </li>
                         <li class="navbar-menu-item">
                             <a href="" class="navbar-menu-link">Giới thiệu</a>

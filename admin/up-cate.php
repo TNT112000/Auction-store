@@ -3,20 +3,22 @@ session_start(); //Dịch vụ bảo vệ
 if (!isset($_SESSION['loginOK'])) {
     header("Location:../index.php");
 }
+
+include '../config.php';
 ?>
 
 <?php
-include '../config.php';
+
 
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+$id= $_GET['id'];
 }
 
 $sql = "SELECT c.category_id,c.edit_category_img,c.edit_category_id,l.category_name FROM edit_category c, list_category l
                                     WHERE c.category_id=l.category_id and c.edit_category_id=$id";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-
+if (mysqli_num_rows($result) > 0){
 if (isset($_POST["sua"])) {
     $edit_category_img = $_FILES['image']['name'];
     $category_id = $_POST['category'];
@@ -49,7 +51,7 @@ if (isset($_POST["sua"])) {
 
     mysqli_close($conn);
 }
-
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,35 +71,41 @@ if (isset($_POST["sua"])) {
     <script src="../JS/main.js"></script>
     <div class="main">
         <?php
-        include '../header-ad.php';
+        include 'header.php';
         ?>
         <div class="content-add">
             <div class="grid wide">
                 <p class="title-add">Chỉnh sửa danh mục</p>
-                <form class="form" action="" method="post" enctype="multipart/form-data">
+                <?php
+                $sql = "SELECT c.category_id,c.edit_category_img,c.edit_category_id,l.category_name FROM edit_category c, list_category l
+                WHERE c.category_id=l.category_id and c.edit_category_id=$id";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+                if (mysqli_num_rows($result) > 0){
+                echo'<form class="form" action="" method="post" enctype="multipart/form-data">
                     <div class="box-add">
                         <label class="content-title-add">Chọn hình ảnh</label>
-                        <input type="file" class="input-add" name="image" value="<?php echo $row['edit_category_img']; ?>">
+                        <input type="file" class="input-add" name="image" value="'. $row['edit_category_img'].'">
                     </div>
                     <div class="box-add">
                         <label class="content-title-add">Tên danh mục </label>
                         <input type="text" list="datalist"  name="category" class="input-add" autocomplete="off">
-                        <datalist id="datalist" class="select-add" >
-                            <?php
+                        <datalist id="datalist" class="select-add" >';
                             $sql = "SELECT * FROM list_category";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result)) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo '<option  value="' . $row['category_id'] . '"> ' . $row['category_name'] . '</option>';
+                                    echo '<option  value="' . $row['category_id'] . '"> ' . $row['category_name'] . ';</option>';
                                 }
                             }
-                            ?>
-                        </datalist>
+                    echo '</datalist>
                     </div>
                     <div class="box-add">
                         <button class="btn-add" type="submit" name="sua">Lưu lại</button>
                     </div>
-                </form>
+                </form>';
+            }
+                ?>
             </div>
         </div>
     </div>
