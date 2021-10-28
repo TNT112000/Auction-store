@@ -114,16 +114,16 @@ VALUE ('$rice_top','$book_img','$book_name','$category_id','$book_thickness','$b
                                 <textarea class="input-add" name="bookTitle" cols="33" rows="4"></textarea>
                             </div>
                             <div class="box-product-add">
-                                <label class="content-title-add">Gía tiền</label>
+                                <label class="content-title-add">Giá tiền</label>
                                 <input type="text" class="input-add" name="bookRice">
                             </div>
                             <div class="box-product-add">
-                                <label class="content-title-add">Gía cao nhất</label>
+                                <label class="content-title-add">Giá cao nhất</label>
                                 <input type="text" class="input-add" name="rice_top">
                             </div>
                         </div>
                         <div class="col l-6">
-                        <p class="title-ok">Thời gian đấu giá</p>
+                        <p class="content-title-add" style="width:170px;">Thời gian đấu giá</p>
                             <div class="box-add">
                                 <label class="content-title-add">Ngày</label>
                                 <input type="text" class="input-add" name="ngay">

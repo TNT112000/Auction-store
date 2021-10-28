@@ -27,9 +27,11 @@
             <div class="content-product-product">
                 <div class="row">
                     <?php
-                    $sql = "SELECT l.ngay,l.nam,l.gio,l.phut,l.giay,l.thang_id,l.rice_top,l.book_id,l.book_img,l.book_name,l.book_rice,m.thang_name,m.thang_id	FROM list_book l, moth m
+                    
+                        $sql = "SELECT l.ngay,l.nam,l.gio,l.phut,l.giay,l.thang_id,l.rice_top,l.book_id,l.book_img,l.book_name,l.book_rice,m.thang_name,m.thang_id	FROM list_book l, moth m
                     WHERE l.thang_id=m.thang_id ";
                     $result = mysqli_query($conn, $sql);
+                    
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo

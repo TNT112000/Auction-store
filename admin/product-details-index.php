@@ -3,7 +3,7 @@ session_start()
 ?>
 
 <?php
-include 'config.php';
+include '../config.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -18,9 +18,9 @@ if (isset($_GET['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css" class="">
-    <link rel="stylesheet" href="css/grid.css" class="">
-    <link rel="stylesheet" href="css/base.css" class="">
+    <link rel="stylesheet" href="../css/style.css" class="">
+    <link rel="stylesheet" href="../css/grid.css" class="">
+    <link rel="stylesheet" href="../css/base.css" class="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -29,10 +29,22 @@ if (isset($_GET['id'])) {
     <div class="main">
         <?php
         include 'header.php';
-        include 'search-cart.php';
+        include '../search-cart.php';
         ?>
+        
         <div class="content-details">
+        
             <div class="wide grid">
+            <div class="edit-delate-product" style="width:300px; margin-bottom:30px;">
+            <?php
+            $sql = "SELECT l.user_top,l.rice_top,l.ngay,l.gio,l.nam,l.phut,l.giay,l.thang_id,l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,l.book_author,l.book_date,l.book_publish,l.book_title,c.category_name,c.category_id,m.thang_name,m.thang_id	FROM list_book l, list_category c, moth m
+            WHERE  l.category_id=c.category_id and l.thang_id=m.thang_id and l.book_id=$id ";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+            ?>
+                        <a class="edit-delate-product-details" href="up-product-details.php?id=<?php echo $row['book_id'] ?>" ><i class="edit-delate-product-details edit-delate-category-icon fas fa-edit" style="margin-right:10px"></i>Chỉnh sửa</a>
+                        <a class="edit-delate-product-details" href="del-product.php?id=<?php echo $row['book_id'] ?>" ><i class="edit-delate-category-icon fas fa-times" style="margin-right:10px"></i>Xóa bỏ</a>
+                </div>
                 <div class="content-details-box">
                     <div class="row">
                         <?php
@@ -43,7 +55,7 @@ if (isset($_GET['id'])) {
                         if (mysqli_num_rows($result) > 0) {
                             echo '<div class="col l-4">
                             <div class="content-details-img">
-                                <img src="image/product-img/' . $row['book_img'] . '" class=details-img>
+                                <img src="../image/product-img/' . $row['book_img'] . '" class=details-img>
                             </div>
                         </div>
                         <div class="col l-5">
@@ -102,19 +114,19 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="col l-4">
                         <div class="cart-auction-box">';
-                        if (isset($_SESSION['loginOK'])){
-                        echo'<a href="cart.php?id=' . $row['book_id'] . '" class="cart-auction-link">Quan tâm</a>';}
-                        else {
-                            echo'<a href="sign-in.php" class="cart-auction-link">Quan tâm</a>';
-                        }
-                        echo'</div>
+                            if (isset($_SESSION['loginOK'])) {
+                                echo '<a href="cart.php?id=' . $row['book_id'] . '" class="cart-auction-link">Quan tâm</a>';
+                            } else {
+                                echo '<a href="sign-in.php" class="cart-auction-link">Quan tâm</a>';
+                            }
+                            echo '</div>
                         </div>
                         <div class="col l-5">
                         <p class="time-auction" id="demo-' . $row['book_id'] . '"></p>
                         </div>
                         <script>
                         document.getElementById("rice-open' . $row['book_id'] . '").style.display="none";
-                        var countDownDate' . $row['book_id'] . ' = new Date("'.$row['thang_name'].' '.$row['ngay'].', '.$row['nam'].' '.$row['gio'].':'.$row['phut'].':'.$row['giay'].'").getTime();
+                        var countDownDate' . $row['book_id'] . ' = new Date("' . $row['thang_name'] . ' ' . $row['ngay'] . ', ' . $row['nam'] . ' ' . $row['gio'] . ':' . $row['phut'] . ':' . $row['giay'] . '").getTime();
                        
                         
                         var x' . $row['book_id'] . ' = setInterval(function() {
@@ -148,17 +160,18 @@ if (isset($_GET['id'])) {
                         }
                         ?>
                     </div>
+                    
                 </div>
             </div>
         </div>
     </div>
     <script>
-        function goBack(){
+        function goBack() {
             history.go();
         }
     </script>
     <?php
-    include 'footer.php';
+    include '../footer.php';
     ?>
 </body>
 <script>

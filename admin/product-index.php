@@ -51,7 +51,7 @@ include '../config.php';
                                     echo 
                         '<div class="col l-3">
                         <div class="content-product-box">
-                            <a href="product-details.php?id=' . $row['book_id'] . '" class="content-product-book">
+                            <a href="product-details-index.php?id=' . $row['book_id'] . '" class="content-product-book">
                                 <div><img src="../image/product-img/' . $row['book_img'] . '" alt="" class="product-book-img"></div>
                                 <div class="product-book-content">
                                     <p class="product-book-name">' . $row['book_name'] . '</p>
@@ -117,6 +117,9 @@ include '../config.php';
                 </div>
             </div>
         </div>
+        <?php
+    include '../footer.php';
+    ?>
     </div>
 </body>
 

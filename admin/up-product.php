@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
 $id= $_GET['id'];
 }
 
-$sql = "SELECT l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,c.category_name	FROM list_book l, list_category c
+$sql = "SELECT l.rice_top,l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,c.category_name	FROM list_book l, list_category c
                 WHERE l.category_id=c.category_id and l.book_id=$id ";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result) ;
@@ -41,7 +41,7 @@ if (isset($_POST["sua"])) {
     }
 
     if ($book_img != '' && $book_name != '' && $category_id != '' && $book_thickness != '' && $book_rice != '') {
-        $sql = "UPDATE list_book SET book_img='$book_img' , book_name='$book_name',category_id='$category_id',book_thickness='$book_thickness',book_rice='$book_rice'  
+        $sql = "UPDATE list_book SET book_img='$book_img' , book_name='$book_name',category_id='$category_id',rice_top='$book_thickness',book_rice='$book_rice'  
         WHERE book_id=$id ";
 
         $result = mysqli_query($conn, $sql);
@@ -81,7 +81,7 @@ if (isset($_POST["sua"])) {
             <div class="grid wide">
                 <p class="title-add">Chỉnh sửa sản phẩm</p>
                 <?php
-                $sql = "SELECT l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,c.category_name	FROM list_book l, list_category c
+                $sql = "SELECT l.rice_top,l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,c.category_name	FROM list_book l, list_category c
                 WHERE l.category_id=c.category_id and l.book_id=$id ";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result) ;
@@ -96,28 +96,14 @@ if (isset($_POST["sua"])) {
                         <input type="text" class="input-add" name="bookName" value="'. $row['book_name'] .'">
                     </div>
                     <div class="box-product-add">
-                        <label class="content-title-add">Số trang</label>
-                        <input type="text" class="input-add" name="bookThickness" value="'. $row['book_thickness'] .'">
-                    </div>
-                    <div class="box-product-add">
                         <label class="content-title-add">Gía tiền</label>
                         <input type="text" class="input-add" name="bookRice" value="'. $row['book_rice'] .'">
                     </div>
                     <div class="box-product-add">
-                        <label class="content-title-add">Tên danh mục </label>
-                        <input list="datalist" type="text" class="input-add" name="category" autocomplete="off">
-                        <datalist class="select-add" id="datalist">';
-        
-                            $sql = "SELECT * FROM list_category";
-                            $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result)) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    echo '<option  value="' . $row['category_id'] . '">'. $row['category_name'].'</option>';
-                                }
-                            }
-
-                    echo'</datalist>
+                        <label class="content-title-add">Số trang</label>
+                        <input type="text" class="input-add" name="bookThickness" value="'. $row['rice_top'] .'">
                     </div>
+                    
                     <div class="box-product-add">
                         <button class="btn-add" type="submit" name="sua">Lưu lại</button>
                     </div>

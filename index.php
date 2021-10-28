@@ -29,6 +29,7 @@ include 'search-cart.php';
 include 'slider.php';
 include 'introduce.php';
 include 'content.php';
+include 'footer.php';
 ?>
 </div>
 
