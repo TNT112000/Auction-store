@@ -9,7 +9,37 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 ?>
-
+<?php
+$sql = "SELECT l.user_top,l.rice_top,l.ngay,l.gio,l.nam,l.phut,l.giay,l.thang_id,l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,l.book_author,l.book_date,l.book_publish,l.book_title,c.category_name,c.category_id,m.thang_name,m.thang_id	FROM list_book l, list_category c, moth m
+WHERE  l.category_id=c.category_id and l.thang_id=m.thang_id and l.book_id=$id ";
+$query = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($query);
+if (isset($_POST['btn-rice'])) {
+    if (isset($_SESSION['loginOK'])) {
+        $rice_top = $_POST['rice_top'];
+        if ($rice_top != "") {
+            if ($rice_top > $row['rice_top']) {
+                $sql = "UPDATE list_book SET rice_top='$rice_top',user_top='$_SESSION[loginOK]' 
+                                                WHERE book_id=$id ";
+                $result = mysqli_query($conn, $sql);
+                if ($result > 0) {
+                    echo '<p class="title-rice">Đấu giá thành công<p>';
+                    header("Location: product-details.php?id=$row[book_id]");
+                } else {
+                    echo '<p class="title-rice">Đấu giá thất bại<p>';
+                    header("Location: product-details.php?id=$row[book_id]");
+                }
+            } else {
+                echo '<p class="title-rice">Bạn phải nhập giá cao hơn<p>';
+            }
+        } else {
+            echo '<p class="title-rice">Bạn chưa nhập giá<p>';
+        }
+    } else {
+        header("Location: sign-in.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,54 +97,55 @@ if (isset($_GET['id'])) {
                                 <p class="content-item">Giá cao nhất</p>
                                 <p class="content-red">' . $row['rice_top'] . 'đ</p>
                                 <p class="content-item">Người trả giá cao nhất</p>
-                                <p class="content-red content-red-stutus">' . $row['user_top'] . '</p>'; ?>
-                            <?php
-                            if (isset($_SESSION['loginOK'])) {
-                                if (isset($_POST['btn-rice'])) {
-                                    $rice_top = $_POST['rice_top'];
-                                    if ($rice_top != "") {
-                                        if ($rice_top > $row['rice_top']) {
-                                            $sql = "UPDATE list_book SET rice_top='$rice_top',user_top='$_SESSION[loginOK]' 
-                                                WHERE book_id=$id ";
-                                            $result = mysqli_query($conn, $sql);
-                                            if ($result > 0) {
-                                                echo '<p class="title-rice">Đấu giá thành công<p>';
-                                            } else {
-                                                echo '<p class="title-rice">Đấu giá thất bại<p>';
-                                            }
+                                <p class="content-red content-red-stutus">' . $row['user_top'] . '</p>
+                                '; ?>
+
+                        <?php
+                        if (isset($_POST['btn-rice'])) {
+                            
+                                $rice_top = $_POST['rice_top'];
+                                if ($rice_top != "") {
+                                    if ($rice_top > $row['rice_top']) {
+                                        $sql = "UPDATE list_book SET rice_top='$rice_top',user_top='$_SESSION[loginOK]' 
+                                                                        WHERE book_id=$id ";
+                                        $result = mysqli_query($conn, $sql);
+                                        if ($result > 0) {
+                                           
+                                            echo '<p class="title-rice">Đấu giá thành công<p>';
                                         } else {
-                                            echo '<p class="title-rice">Bạn phải nhập giá cao hơn<p>';
+                                           
+                                            echo '<p class="title-rice">Đấu giá thất bại<p>';
                                         }
                                     } else {
-                                        echo '<p class="title-rice">Bạn chưa nhập giá<p>';
+                                        echo '<p class="title-rice">Bạn phải nhập giá cao hơn<p>';
                                     }
+                                } else {
+                                    echo '<p class="title-rice">Bạn chưa nhập giá<p>';
                                 }
-                            } else {
-                                echo '<p class="title-rice">Bạn chưa đăng nhập<p>';
-                            }
-                            ?>
-                        <?php echo '<form action="" class ="form-rice"  method="post" enctype="multipart/form-data">
+                            
+                        }
+                         echo '<form action="" class ="form-rice"  method="post" enctype="multipart/form-data">
                                 <input id="input-rice' . $row['book_id'] . '" type="text" class="input-rice" name="rice_top" placeholder="Nhập số tiền đấu giá">
-                                <button id="btn-rice' . $row['book_id'] . '" class="btn-content-auction" name="btn-rice" onclick="goBack()" > Trả giá </button>
+                                <button id="btn-rice' . $row['book_id'] . '" class="btn-content-auction" name="btn-rice" onclick="goBack()"> Trả giá </button>
                                 <p id="rice-open' . $row['book_id'] . '" class="content-red-title"> Đã chốt giá </p>
                                 </form> 
                             </div>
                         </div>
                         <div class="col l-4">
                         <div class="cart-auction-box">';
-                        if (isset($_SESSION['loginOK'])){
-                        echo'<a href="cart.php?id=' . $row['book_id'] . '" class="cart-auction-link">Quan tâm</a>';}
-                        else {
-                            echo'<a href="sign-in.php" class="cart-auction-link">Quan tâm</a>';
-                        }
-                        echo'</div>
+                            if (isset($_SESSION['loginOK'])) {
+                                echo '<a href="cart.php?id=' . $row['book_id'] . '" class="cart-auction-link">Quan tâm</a>';
+                            } else {
+                                echo '<a href="sign-in.php" class="cart-auction-link">Quan tâm</a>';
+                            }
+                            echo '</div>
                         </div>
                         <div class="col l-5">
                         <p class="time-auction" id="demo-' . $row['book_id'] . '"></p>
                         </div>
                         <script>
                         document.getElementById("rice-open' . $row['book_id'] . '").style.display="none";
-                        var countDownDate' . $row['book_id'] . ' = new Date("'.$row['thang_name'].' '.$row['ngay'].', '.$row['nam'].' '.$row['gio'].':'.$row['phut'].':'.$row['giay'].'").getTime();
+                        var countDownDate' . $row['book_id'] . ' = new Date("' . $row['thang_name'] . ' ' . $row['ngay'] . ', ' . $row['nam'] . ' ' . $row['gio'] . ':' . $row['phut'] . ':' . $row['giay'] . '").getTime();
                        
                         
                         var x' . $row['book_id'] . ' = setInterval(function() {
@@ -153,8 +184,8 @@ if (isset($_GET['id'])) {
         </div>
     </div>
     <script>
-        function goBack(){
-            history.go();
+        function goBack() {
+            window.history.go(0);
         }
     </script>
     <?php

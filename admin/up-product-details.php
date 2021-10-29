@@ -13,57 +13,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 
-$sql = "SELECT l.user_top,l.rice_top,l.ngay,l.gio,l.nam,l.phut,l.giay,l.thang_id,l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,l.book_author,l.book_date,l.book_publish,l.book_title,c.category_name,c.category_id,m.thang_name,m.thang_id	FROM list_book l, list_category c, moth m
-                    WHERE  l.category_id=c.category_id and l.thang_id=m.thang_id and l.book_id=$id ";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-if (mysqli_num_rows($result) > 0) {
 
-    if (isset($_POST["sua"])) {
-        $book_img = $_FILES['bookImg']['name'];
-        $book_name = $_POST['bookName'];
-        $category_id = $_POST['category'];
-        $book_thickness = $_POST['bookThickness'];
-        $book_title = $_POST['bookTitle'];
-        $book_rice = $_POST['bookRice'];
-        $book_author = $_POST['bookAuthor'];
-        $book_date = $_POST['bookDate'];
-        $book_publish = $_POST['bookPublish'];
-        $nam = $_POST['nam'];
-        $thang = $_POST['thang'];
-        $ngay = $_POST['ngay'];
-        $gio = $_POST['gio'];
-        $phut = $_POST['phut'];
-        $giay = $_POST['giay'];
-        $rice_top = $_POST['rice_top'];
-
-        if ($_FILES['bookImg']['name'] == '') {
-            $book_img = $row['book_img'];
-        } else {
-            $book_img = $_FILES['bookImg']['name'];
-        }
-
-        if ($_POST['category'] == '') {
-            $category_id = $row['category_id'];
-        } else {
-            $category_id = $_POST['category'];
-        }
-
-        if ($nam != '' && $ngay != '' && $thang != '' && $book_img != '' && $book_name != '' && $category_id != '' && $book_thickness != '' && $book_title != '' && $book_rice != '' && $book_publish != '' && $book_date != '' && $book_author != '') {
-            $sql = "UPDATE list_book SET book_img='$book_img' , book_name='$book_name',category_id='$category_id',rice_top='$book_thickness',book_rice='$book_rice'  
-        WHERE book_id=$id ";
-
-            $result = mysqli_query($conn, $sql);
-            if ($result > 0) {
-                header("location: product-details-index.php");
-            } else {
-                echo "Lỗi!";
-            }
-        }
-
-        mysqli_close($conn);
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -94,8 +44,70 @@ if (mysqli_num_rows($result) > 0) {
                 WHERE  l.category_id=c.category_id and l.thang_id=m.thang_id and l.book_id=$id ";
                 $result = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_assoc($result);
+                if (mysqli_num_rows($result) > 0){
+                if (isset($_POST["sua"])) {
+                    $book_img = $_FILES['bookImg']['name'];
+                    $book_name = $_POST['bookName'];
+                    $category_id = $_POST['category'];
+                    $book_thickness = $_POST['bookThickness'];
+                    $book_title = $_POST['bookTitle'];
+                    $book_rice = $_POST['bookRice'];
+                    $book_author = $_POST['bookAuthor'];
+                    $book_date = $_POST['bookDate'];
+                    $book_publish = $_POST['bookPublish'];
+                    $nam = $_POST['nam'];
+                    $thang = $_POST['thang'];
+                    $ngay = $_POST['ngay'];
+                    $gio = $_POST['gio'];
+                    $phut = $_POST['phut'];
+                    $giay = $_POST['giay'];
+                    
+
+                    if ($_FILES['bookImg']['name'] == '') {
+                        $book_img = $row['book_img'];
+                    } else {
+                        $book_img = $_FILES['bookImg']['name'];
+                    }
+
+                    if ($_POST['category'] == '') {
+                        $category_id = $row['category_id'];
+                    } else {
+                        $category_id = $_POST['category'];
+                    }
+
+                    if ($_POST['thang'] == '') {
+                        $thang = $row['thang_id'];
+                    } else {
+                        $thang = $_POST['thang'];
+                    }
+
+                    if ($_POST['bookTitle'] == '') {
+                        $book_title = $row['book_title'];
+                    } else {
+                        $book_title = $_POST['bookTitle'];
+                    }
+
+                    if ($nam != '' && $ngay != '' && $thang != '' && $book_img != '' && $book_name != '' && $category_id != '' && $book_thickness != '' && $book_title != '' && $book_rice != '' && $book_publish != '' && $book_date != '' && $book_author != '') {
+                        $sql = "UPDATE list_book SET book_img='$book_img' , book_name='$book_name',category_id='$category_id',book_rice='$book_rice' , 
+                        book_title='$book_title' , book_thickness='$book_thickness' ,book_author='$book_author',book_date='$book_date' ,book_publish='$book_publish',
+                        ngay='$ngay',thang_id='$thang',nam='$nam',giay='$giay',gio='$gio',giay='$giay'  WHERE book_id=$id ";
+
+                        $product = mysqli_query($conn, $sql);
+                        if ($product > 0) {
+                            header("Location: product-details-index.php?id=$row[book_id]");
+                        } else {
+                            echo "Lỗi!";
+                        }
+                    }
+                    else {
+                        echo '<p class="title-ok">Nhập thiếu thông tin</p>';
+                    }
+
+                    mysqli_close($conn);
+                }
+            }
                 ?>
-                <form class="form" action="" method="post" enctype="multipart/form-data">
+                <form class="form" action="" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col l-6">
                             <div class="box-product-add">
@@ -118,7 +130,7 @@ if (mysqli_num_rows($result) > 0) {
                                 <label class="content-title-add">Tên sách</label>
                                 <input type="text" class="input-add" name="bookName" value="<?php echo $row['book_name'] ?>">
                             </div>
-                            
+
                             <div class="box-product-add">
                                 <label class="content-title-add">Số trang</label>
                                 <input type="text" class="input-add" name="bookThickness" value="<?php echo $row['book_thickness'] ?>">
@@ -131,14 +143,10 @@ if (mysqli_num_rows($result) > 0) {
                                 <label class="content-title-add">Giá tiền</label>
                                 <input type="text" class="input-add" name="bookRice" value="<?php echo $row['book_rice'] ?>">
                             </div>
-                            <div class="box-product-add">
-                                <label class="content-title-add">Giá cao nhất</label>
-                                <input type="text" class="input-add" name="rice_top" value="<?php echo $row['rice_top'] ?>">
-                            </div>
-                            
+
                         </div>
                         <div class="col l-6">
-                            
+
                             <div class="box-add">
                                 <label class="content-title-add">Giờ</label>
                                 <input type="text" class="input-add" name="gio" value="<?php echo $row['gio'] ?>">
@@ -147,7 +155,7 @@ if (mysqli_num_rows($result) > 0) {
                                 <label class="content-title-add">Phút</label>
                                 <input type="text" class="input-add" name="phut" value="<?php echo $row['phut'] ?>">
                             </div>
-                            
+
                             <div class="box-add">
                                 <label class="content-title-add">Giây</label>
                                 <input type="text" class="input-add" name="giay" value="<?php echo $row['giay'] ?>">
@@ -193,7 +201,7 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                     </div>
                     <div class="box-product-add">
-                        <button class="btn-add" type="submit" name="them">Lưu lại</button>
+                        <button class="btn-add" type="submit" name="sua">Lưu lại</button>
                     </div>
 
                 </form>

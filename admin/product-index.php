@@ -28,8 +28,6 @@ include '../config.php';
          include 'header.php';
         ?>
 
-        <style>
-        </style>
 
         <div class="add-category-bg">
             <div class="wide grid">

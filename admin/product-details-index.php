@@ -25,11 +25,10 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-    <script src="JS/main.js"></script>
+    
     <div class="main">
         <?php
         include 'header.php';
-        include '../search-cart.php';
         ?>
         
         <div class="content-details">
@@ -105,27 +104,17 @@ if (isset($_GET['id'])) {
                                 echo '<p class="title-rice">Bạn chưa đăng nhập<p>';
                             }
                             ?>
-                        <?php echo '<form action="" class ="form-rice"  method="post" enctype="multipart/form-data">
-                                <input id="input-rice' . $row['book_id'] . '" type="text" class="input-rice" name="rice_top" placeholder="Nhập số tiền đấu giá">
-                                <button id="btn-rice' . $row['book_id'] . '" class="btn-content-auction" name="btn-rice" onclick="goBack()" > Trả giá </button>
-                                <p id="rice-open' . $row['book_id'] . '" class="content-red-title"> Đã chốt giá </p>
-                                </form> 
-                            </div>
+                        <?php 
+                            echo'</div>
                         </div>
                         <div class="col l-4">
-                        <div class="cart-auction-box">';
-                            if (isset($_SESSION['loginOK'])) {
-                                echo '<a href="cart.php?id=' . $row['book_id'] . '" class="cart-auction-link">Quan tâm</a>';
-                            } else {
-                                echo '<a href="sign-in.php" class="cart-auction-link">Quan tâm</a>';
-                            }
-                            echo '</div>
+                        
                         </div>
                         <div class="col l-5">
                         <p class="time-auction" id="demo-' . $row['book_id'] . '"></p>
                         </div>
                         <script>
-                        document.getElementById("rice-open' . $row['book_id'] . '").style.display="none";
+                        
                         var countDownDate' . $row['book_id'] . ' = new Date("' . $row['thang_name'] . ' ' . $row['ngay'] . ', ' . $row['nam'] . ' ' . $row['gio'] . ':' . $row['phut'] . ':' . $row['giay'] . '").getTime();
                        
                         

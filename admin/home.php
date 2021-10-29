@@ -66,8 +66,8 @@ include 'header.php';
             <div class="row">
                 <div class="col l-3">
                     <div class="manage-item">
-                        <p class="manage-title">Quản lý tài khoản</p>
-                        <a href="" class="manage-link">Ấn vào đây</a>
+                        <p class="manage-title">Danh sách tài khoản</p>
+                        <a href="user-index.php" class="manage-link">Ấn vào đây</a>
                     </div>
                 </div>
                 <div class="col l-3">

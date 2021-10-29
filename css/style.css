@@ -674,3 +674,56 @@ datalist#datalist option[value] {
     align-items: center;
 }
 
+.table-users{
+    border: 1px solid var(--main--color);
+    border-collapse: collapse;
+    margin: auto;
+}
+
+.item-id{
+    width: 70px;
+    height: 50px;
+    text-align: center;
+}
+.item-name{
+    width: 180px;
+    height: 50px;
+    text-align: center;
+}
+
+.item-date{
+    width: 260px;
+    height: 50px;
+    text-align: center;
+}
+.item-email{
+    width: 260px;
+    height: 50px;
+    text-align: center;
+}
+.item-pass-item{
+    width: 250px;
+    height: 50px;
+    text-align: center;
+    display:-webkit-box;
+    -webkit-box-orient:vertical ;
+    -webkit-line-clamp:1 ;
+    line-height: 50px;
+    padding: 0 10px 0 10px;
+    overflow: hidden;
+    display: block;
+    margin-right: 10px;
+    
+}
+td ,th,tr{
+    border: 1px solid var(--main--color);
+    border-collapse: collapse;
+}
+.gioithieu{
+    padding: 20px;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--main--color);
+    text-align: left;
+}
+
