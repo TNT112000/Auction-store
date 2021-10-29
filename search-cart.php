@@ -10,9 +10,17 @@
                 </button>
                 </form>
             </div>
-            <a href="view-cart.php" class="cart">
+            <?php
+            if(isset($_SESSION['loginOK'])){
+                echo'<a href="view-cart.php" class="cart">
                 <img src="image/auction-img/img_79668.png" alt="" class="header-icon-img">
-            </a>
+            </a>';}
+            else {
+                echo'<a href="sign-in.php" class="cart">
+                <img src="image/auction-img/img_79668.png" alt="" class="header-icon-img">
+            </a>';
+            }
+            ?>
         </div>
     </div>
 </div>
