@@ -30,12 +30,12 @@
                                     <a href="logout.php" class="navbar-menu-link navbar-menu-link-item">Đăng xuất</a>
                                </li>';
 
-                            $sql = "SELECT user_id FROM users ";
-                            $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                                $row = mysqli_fetch_assoc($result);
-                                echo '<li class="navbar-menu-item user_list-item">
-                                    <a href="../up-pass.php?id=' . $row['user_id'] . '" class="navbar-menu-link navbar-menu-link-item">Đổi mật khẩu</a>
+                            $sql = "SELECT * FROM users WHERE user_name='$_SESSION[loginOK]'";
+                            $user = mysqli_query($conn, $sql);
+                            if(mysqli_num_rows($user)>0){
+                            $row = mysqli_fetch_assoc($user);
+                            echo '<li class="navbar-menu-item user_list-item">
+                                    <a href="up-pass.php?id=' . $row['user_id'] . '" class="navbar-menu-link navbar-menu-link-item">Đổi mật khẩu</a>
                                 </li>';
                             }
                             echo '</div>

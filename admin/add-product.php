@@ -123,7 +123,7 @@ VALUE ('$_SESSION[loginOK]','$rice_top','$book_img','$book_name','$category_id',
                             </div>
                         </div>
                         <div class="col l-6">
-                        <p class="content-title-add" style="width:170px;">Thời gian đấu giá</p>
+                        <p class="content-title-add" style="width:170px;">Quy định đấu giá</p>
                             <div class="box-add">
                                 <label class="content-title-add">Ngày</label>
                                 <input type="text" class="input-add" name="ngay">

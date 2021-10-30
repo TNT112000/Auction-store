@@ -1,41 +1,55 @@
-<div class="content">
-    <div class="grid wide">
-        <div class="content-category">
-            <p class="content-title">Danh mục đấu giá</p>
-            <div class="content-category-product">
-                <div class="row">
-                    <?php
-                    $sql = "SELECT * FROM edit_category c, list_category l
-                                    WHERE c.category_id=l.category_id";
-                    $result = mysqli_query($conn, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<div class="col l-1-5">';
-                            echo '<div href="" class="content-category-book">';
-                            echo '<a href="cate-product-index.php?id='.$row['category_id'].'" ><img src="image/product-img/' . $row['edit_category_img'] . '" alt="" class="category-book-img" ></a>';
-                            echo '<a href="cate-product-index.php?id='.$row['category_id'].'" class="category-book-name">' . $row['category_name'] . '</a>';
-                            echo ' </div>';
-                            echo '</div>';
-                        }
-                    }
-                    ?>
+<?php
+session_start();
+
+
+include 'config.php';
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <script src="JS/main.js"></script>
+    <div class="main">
+        <?php
+        include 'header.php';
+        include 'search-cart.php';
+        ?>
+        <div class="content">
+            <div class="grid wide">
+                
+                <div class="">
+                    <p class="cate-product-title">Tìm kiếm sản phẩm</p>
                 </div>
-            </div>
-        </div>
-        <div class="content-product">
-            <p class="content-title">Sản phẩm Tiêu biểu</p>
-            <div class="content-product-product">
-                <div class="row">
-                    <?php
-                    
-                        $sql = "SELECT * FROM list_book l, moth m
-                    WHERE l.thang_id=m.thang_id ";
-                    $result = mysqli_query($conn, $sql);
-                    
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo
-                    '<div class="col l-3">
+                <div class="content-product">
+                    <p class="content-title">Sản phẩm Tiêu biểu</p>
+                    <div class="content-product-product">
+                        <div class="row">
+                            <?php
+                            $sql = "SELECT * FROM list_book ORDER BY book_id DESC";
+                            if(isset($_POST['btn-search'])){
+                            $key=$_POST['search'];
+                            $sql = "SELECT * FROM list_book l, moth m,list_category c
+                            WHERE l.thang_id=m.thang_id and c.category_id=l.category_id and l.book_name LIKE '%$key%' Order by l.book_id DESC ";
+                            $result = mysqli_query($conn, $sql);
+                        }
+
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo
+                                    '<div class="col l-3">
                         <div class="content-product-box">
                             <a href="product-details.php?id=' . $row['book_id'] . '" class="content-product-book">
                                 <div><img src="image/product-img/' . $row['book_img'] . '" alt="" class="product-book-img"></div>
@@ -60,7 +74,7 @@
                     </div>
                     <script>
 
-  var countDownDate' . $row['book_id'] . ' = new Date("'.$row['thang_name'].' '.$row['ngay'].', '.$row['nam'].' '.$row['gio'].':'.$row['phut'].':'.$row['giay'].'").getTime();
+  var countDownDate' . $row['book_id'] . ' = new Date("' . $row['thang_name'] . ' ' . $row['ngay'] . ', ' . $row['nam'] . ' ' . $row['gio'] . ':' . $row['phut'] . ':' . $row['giay'] . '").getTime();
  
   
   var x' . $row['book_id'] . ' = setInterval(function() {
@@ -91,11 +105,20 @@
   }, 1000);
 </script>
                     ';
-                        }
-                    }
-                    ?>
+                                }
+                            }
+                        
+                            ?>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
+        <?php
+        include 'footer.php';
+        ?>
     </div>
-</div>
+</body>
+
+</html>

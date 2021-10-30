@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
 $id= $_GET['id'];
 }
 
-$sql = "SELECT l.rice_top,l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,c.category_name	FROM list_book l, list_category c
+$sql = "SELECT * FROM list_book l, list_category c
                 WHERE l.category_id=c.category_id and l.book_id=$id ";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result) ;
@@ -81,7 +81,7 @@ if (isset($_POST["sua"])) {
             <div class="grid wide">
                 <p class="title-add">Chỉnh sửa sản phẩm</p>
                 <?php
-                $sql = "SELECT l.rice_top,l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,c.category_name	FROM list_book l, list_category c
+                $sql = "SELECT * FROM list_book l, list_category c
                 WHERE l.category_id=c.category_id and l.book_id=$id ";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result) ;

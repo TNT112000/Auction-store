@@ -3,11 +3,13 @@ session_start();
 if (!isset($_SESSION['loginOK'])) {
     header("Location:index.php");
 }
+
 include 'config.php';
+
 $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
 
 
-$sql = "SELECT l.user_top,l.rice_top,l.ngay,l.gio,l.nam,l.phut,l.giay,l.thang_id,l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,l.book_author,l.book_date,l.book_publish,l.book_title,c.category_name,c.category_id,m.thang_name,m.thang_id	FROM list_book l, list_category c, moth m
+$sql = "SELECT *	FROM list_book l, list_category c, moth m
                 WHERE  l.category_id=c.category_id and l.thang_id=m.thang_id ";
                 $result = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_assoc($result);

@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
 $id= $_GET['id'];
 }
 
-$sql = "SELECT c.category_id,c.edit_category_img,c.edit_category_id,l.category_name FROM edit_category c, list_category l
+$sql = "SELECT * FROM edit_category c, list_category l
                                     WHERE c.category_id=l.category_id and c.edit_category_id=$id";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
@@ -77,7 +77,7 @@ if (isset($_POST["sua"])) {
             <div class="grid wide">
                 <p class="title-add">Chỉnh sửa danh mục</p>
                 <?php
-                $sql = "SELECT c.category_id,c.edit_category_img,c.edit_category_id,l.category_name FROM edit_category c, list_category l
+                $sql = "SELECT * FROM edit_category c, list_category l
                 WHERE c.category_id=l.category_id and c.edit_category_id=$id";
                 $result = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_assoc($result);

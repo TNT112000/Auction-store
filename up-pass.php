@@ -8,7 +8,7 @@ if (!isset($_SESSION['loginOK'])) {
 include 'config.php';
 
 if (isset($_GET['id'])) {
-$id= $_GET['id'];
+    $id = $_GET['id'];
 }
 ?>
 
@@ -41,18 +41,23 @@ $id= $_GET['id'];
 
                     $pass1 = md5($pass1);
                     $pass2 = md5($pass2);
-                    $sql = "SELECT * FROM users WHERE  user_name='$name' AND user_password='$pass1' and user_id=$id ";
+                    $sql = "SELECT * FROM users WHERE   user_name='$name' and user_password='$pass1' and user_id=$id ";
                     $query = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($query) > 0) {
-                        $sql = "UPDATE users SET user_password='$pass2'  
+                        if ($name == $_SESSION['loginOK']) {
+                            $sql = "UPDATE users SET user_password='$pass2'  
                                 WHERE user_id=$id ";
-                        $result = mysqli_query($conn, $sql);
-                        if ($result > 0) {
-                            echo '<p class="title-ok">Đổi mật khẩu thành công</p>';
-                        } else {
-                            echo '<p class="title-ok">Đổi mật khẩu thất bại</p>';
+                            $result = mysqli_query($conn, $sql);
+                            if ($result > 0) {
+                                echo '<p class="title-ok">Đổi mật khẩu thành công</p>';
+                            } else {
+                                echo '<p class="title-ok">Đổi mật khẩu thất bại</p>';
+                            }
+                            mysqli_close($conn);
                         }
-                        mysqli_close($conn);
+                        else {
+                            echo '<p class="title-ok">Tên đăng nhập không trùng khớp</p>';
+                        }
                     } else {
                         echo '<p class="title-ok">Sai tai khoản hoặc mật khẩu</p>';
                     }

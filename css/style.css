@@ -828,3 +828,14 @@ td ,th,tr{
     }
 }
 
+.cate-product-title{
+    height: 50px;
+    padding: 10px 20px 10px 20px;
+    background-color: var(--main--color);
+    text-align: center;
+    color:var(--secondary--color);
+    font-size: 25px;
+    line-height: 30px;
+    display: inline-block;
+    margin-bottom: 100px;
+}

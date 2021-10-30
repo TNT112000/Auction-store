@@ -44,7 +44,7 @@
                         <div class="row">
                             <?php
                             
-                            $sql = "SELECT c.edit_category_id,c.edit_category_img,l.category_name FROM edit_category c, list_category l
+                            $sql = "SELECT * FROM edit_category c, list_category l
                                     WHERE c.category_id=l.category_id";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
