@@ -770,3 +770,61 @@ td ,th,tr{
 .content-details-user{
     padding: 0 0 100px 0;
 }
+
+.send-email{
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    background-color: orange;
+    top:600px;
+    right: 30px;
+    border-radius: 80px;
+    animation: tnt3 linear 0.5s infinite;
+    z-index: 10;
+}
+@keyframes tnt3{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.2);
+    }
+}
+.link-send-email{
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background-color: orange;
+    border-radius: 80px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    
+    
+}
+
+.send-email-icon{
+    font-size: 37px;
+    color: var(--secondary--color);
+}
+.send-email-2{
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    background-color: orange;
+    top:600px;
+    right: 30px;
+    border-radius: 80px;
+    animation: tnt2 linear 0.5s infinite;
+}
+@keyframes tnt2{
+    0%{
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.6);
+        opacity: 0.5;
+    }
+}
+
