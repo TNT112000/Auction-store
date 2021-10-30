@@ -31,7 +31,7 @@ include '../config.php';
 
         <div class="add-category-bg">
             <div class="wide grid">
-                <a href="add-product.php" class="add-category">Thêm danh Sản Phẩm</a>
+                <a href="add-product.php" class="add-category">Thêm Sản Phẩm</a>
             </div>
         </div>
         <div class="content">

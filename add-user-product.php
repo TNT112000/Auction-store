@@ -1,9 +1,9 @@
 <?php
 session_start(); //Dịch vụ bảo vệ
 if (!isset($_SESSION['loginOK'])) {
-    header("Location:../index.php");
+    header("Location:index.php");
 }
-include '../config.php';
+include 'config.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,15 +14,15 @@ include '../config.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css" class="">
-    <link rel="stylesheet" href="../css/grid.css" class="">
-    <link rel="stylesheet" href="../css/base.css" class="">
+    <link rel="stylesheet" href="css/style.css" class="">
+    <link rel="stylesheet" href="css/grid.css" class="">
+    <link rel="stylesheet" href="css/base.css" class="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <script src="../JS/main.js"></script>
-    <div class="main">
+    <script src="JS/main.js"></script>
+    <div class="main" >
         <?php
         include 'header.php';
         ?>
@@ -56,7 +56,7 @@ VALUE ('$_SESSION[loginOK]','$rice_top','$book_img','$book_name','$category_id',
 
                         $result = mysqli_query($conn, $sql);
                         if ($result > 0) {
-                            header("location:product-index.php");
+                            header("location:user-sell-index.php");
                         } else {
                             echo "Lỗi!";
                         }

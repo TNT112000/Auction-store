@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['loginOK'])) {
+    header("Location:index.php");
+}
 include 'config.php';
 $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
 

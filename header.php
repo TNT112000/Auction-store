@@ -22,7 +22,11 @@
                             <div class="user_list">';
 
 
-                            echo '<li class="navbar-menu-item user_list-item">
+                            echo '
+                            <li class="navbar-menu-item user_list-item">
+                                    <a href="user-sell.php" class="navbar-menu-link navbar-menu-link-item">Bán Hàng</a>
+                               </li>
+                            <li class="navbar-menu-item user_list-item">
                                     <a href="logout.php" class="navbar-menu-link navbar-menu-link-item">Đăng xuất</a>
                                </li>';
 

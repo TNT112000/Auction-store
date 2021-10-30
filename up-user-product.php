@@ -1,9 +1,9 @@
 <?php
 session_start(); //Dịch vụ bảo vệ
 if (!isset($_SESSION['loginOK'])) {
-    header("Location:../index.php");
+    header("Location:index.php");
 }
-include '../config.php';
+include 'config.php';
 ?>
 
 <?php
@@ -24,14 +24,14 @@ if (isset($_GET['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css" class="">
-    <link rel="stylesheet" href="../css/grid.css" class="">
-    <link rel="stylesheet" href="../css/base.css" class="">
+    <link rel="stylesheet" href="css/style.css" class="">
+    <link rel="stylesheet" href="css/grid.css" class="">
+    <link rel="stylesheet" href="css/base.css" class="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <script src="../JS/main.js"></script>
+    <script src="JS/main.js"></script>
     <div class="main">
         <?php
         include 'header.php';
@@ -94,7 +94,7 @@ if (isset($_GET['id'])) {
 
                         $product = mysqli_query($conn, $sql);
                         if ($product > 0) {
-                            header("Location: product-details-index.php?id=$row[book_id]");
+                            header("Location: user-sell-index.php");
                         } else {
                             echo "Lỗi!";
                         }
@@ -205,6 +205,9 @@ if (isset($_GET['id'])) {
                     </div>
 
                 </form>
+
+
+
             </div>
         </div>
     </div>

@@ -701,8 +701,13 @@ datalist#datalist option[value] {
     height: 50px;
     text-align: center;
 }
+.item-phone{
+    width: 130px;
+    height: 50px;
+    text-align: center;
+}
 .item-pass-item{
-    width: 250px;
+    width: 150px;
     height: 50px;
     text-align: center;
     display:-webkit-box;
@@ -726,4 +731,42 @@ td ,th,tr{
     color: var(--main--color);
     text-align: left;
 }
+.user-auction-name{
+    width: 160px;
+    height: 50px;
+    text-align: center;
+}
+.user-auction-phone{
+    width: 110px;
+    height: 50px;
+    text-align: center;
+}
+.user-auction-email{
+    width: 280px;
+    height: 50px;
+    text-align: center;
+}
+.user-auction-product{
+    width: 300px;
+    height: 50px;
+    text-align: center;
+}
+.user-auction-rice{
+    width: 90px;
+    height: 50px;
+    text-align: center;
+}
+.user-auction-rice_top{
+    width: 90px;
+    height: 50px;
+    text-align: center;
+}
+.user-auction-time{
+    width: 90px;
+    height: 50px;
+    text-align: center;
+}
 
+.content-details-user{
+    padding: 0 0 100px 0;
+}

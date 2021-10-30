@@ -28,14 +28,15 @@ include 'config.php';
                     $user = $_POST['name'];
                     $email = $_POST['email'];
                     $pass = $_POST['password'];
+                    $phone =$_POST['phone'];
 
-                    $sql = "SELECT * FROM  users WHERE user_name='$user' and user_email='$email' ";
+                    $sql = "SELECT * FROM  users WHERE user_name='$user' and user_email='$email' and user_phone='$phone' ";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
-                        echo '<p class="title-ok">Email hoặc User đã tồn tại</p>';
+                        echo '<p class="title-ok">Email hoặc User hoặc sđt đã tồn tại</p>';
                     } else {
-                        if ($user != '' && $email != '' && $pass != '') {
+                        if ($user != '' && $email != '' && $pass != '' && $phone != '') {
                             $pass = md5($pass);
                             $partten = "/^[A-Za-z0-9_\.]{5,18}$/";
                             $subject = $user;
@@ -43,8 +44,8 @@ include 'config.php';
                                 echo '<p class="title-ok">User gồm các ký tự A đến Z từ 0-9 dấu và dấu gạch dưới</p>';
                             }
                             else{
-                                $sql = "INSERT INTO users (user_name,user_email,user_password)
-                                VALUE ('$user','$email','$pass')";
+                                $sql = "INSERT INTO users (user_name,user_email,user_password,user_phone)
+                                VALUE ('$user','$email','$pass','$phone')";
                                 $result = mysqli_query($conn, $sql);
                                 if ($result > 0) {
                                     echo '<p class="title-ok">Đăng ký thành công</p>';
@@ -61,6 +62,7 @@ include 'config.php';
                 ?>
                 <input type="text" name="name" placeholder="Tên người dùng" />
                 <input type="email" name="email" placeholder="Email" />
+                <input type="text" name="phone" placeholder="Số điện thoại" />
                 <input type="password" name="password" placeholder="Mật khẩu" />
                 <button type="submit" name="sign-up">Đăng Ký</button>
             </form>

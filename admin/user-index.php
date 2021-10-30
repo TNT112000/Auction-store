@@ -41,6 +41,7 @@ include '../config.php';
                             <th class="item-date">Ngày đăng ký</th>
                             <th class="item-name">Tên </th>
                             <th class="item-email">Eamil</th>
+                            <th class="item-phone">SĐT</th>
                             <th class="item-pass">Mật khẩu</th>
                         </thead>
                         <tbody>
@@ -55,6 +56,7 @@ include '../config.php';
                                 <td class="item-date">'.$row['user_date'].'</td>
                                 <td class="item-name">'.$row['user_name'].'</td>
                                 <td class="item-email">'.$row['user_email'].'</td>
+                                <td class="item-phone">'.$row['user_phone'].'</td>
                                 <td ><div class="item-pass-item">'.$row['user_password'].'</div></td>
                             </tr>';
                         }}

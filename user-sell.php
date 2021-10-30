@@ -1,9 +1,9 @@
 <?php
 session_start(); //Dịch vụ bảo vệ
 if (!isset($_SESSION['loginOK'])) {
-    header("Location:../index.php");
+    header("Location:index.php");
 }
-include '../config.php';
+include 'config.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,13 +14,13 @@ include '../config.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css" class="">
-    <link rel="stylesheet" href="../css/grid.css" class="">
-    <link rel="stylesheet" href="../css/base.css" class="">
+    <link rel="stylesheet" href="css/style.css" class="">
+    <link rel="stylesheet" href="css/grid.css" class="">
+    <link rel="stylesheet" href="css/base.css" class="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body >
-<script src="../JS/main.js"></script>
+<script src="JS/main.js"></script>
 <div class="main">
 <?php
 include 'header.php';
@@ -61,31 +61,19 @@ include 'header.php';
     </style>
     <div class="content">
     <div class="wide grid">
-        <p class="title">Chào mừng bạn đến với trang quản trị</p>
+    <p class="title">Chào mừng bạn đến với trang cá nhân</p>
         <div class="manage">
             <div class="row">
                 <div class="col l-3">
                     <div class="manage-item">
-                        <p class="manage-title">Danh sách tài khoản</p>
-                        <a href="user-index.php" class="manage-link">Ấn vào đây</a>
-                    </div>
-                </div>
-                <div class="col l-3">
-                    <div class="manage-item">
-                        <p class="manage-title">Quản lý danh mục</p>
-                        <a href="cate-index.php" class="manage-link">Ấn vào đây</a>
-                    </div>
-                </div>
-                <div class="col l-3">
-                    <div class="manage-item">
-                        <p class="manage-title">Quản lý sản phẩm</p>
-                        <a href="product-index.php" class="manage-link">Ấn vào đây</a>
+                        <p class="manage-title">Sản phẩm đấu giá</p>
+                        <a href="user-sell-index.php" class="manage-link">Ấn vào đây</a>
                     </div>
                 </div>
                 <div class="col l-3">
                     <div class="manage-item">
                         <p class="manage-title">Người đấu giá</p>
-                        <a href="user-auction.php" class="manage-link">Ấn vào đây</a>
+                        <a href="user-sell-auction.php" class="manage-link">Ấn vào đây</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +81,7 @@ include 'header.php';
     </div>
     </div>
     <?php
-    include '../footer.php';
+    include 'footer.php';
     ?>
 </div>
 </body>
