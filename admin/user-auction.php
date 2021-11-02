@@ -18,11 +18,20 @@ include '../config.php';
     <link rel="stylesheet" href="../css/style.css" class="">
     <link rel="stylesheet" href="../css/grid.css" class="">
     <link rel="stylesheet" href="../css/base.css" class="">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" class="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
 <script src="../JS/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+ 
+<script>
+    $(document).ready(function () {
+        $('#table2').DataTable();
+    });
+</script>
     <div class="main">
         <?php
          include 'header.php';
@@ -32,10 +41,10 @@ include '../config.php';
                 <a href="add-product.php" class="add-category">Người Đấu giá</a>
             </div>
         </div>
-        <div class="content">
-            <div class="grid wide">
+        <div class="content"> 
+        <div class="grid wide">
                 <div class="content-product">
-                    <table class="table-users">
+                    <table class="table-users" id="table2" style="margin:0 0 20px 0;">
                         <thead>
                             <th class="user-auction-name">Người Đấu Giá</th>
                             <th class="user-auction-phone">SĐT</th>

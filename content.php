@@ -59,7 +59,6 @@
                         </div>
                     </div>
                     <script>
-
   var countDownDate' . $row['book_id'] . ' = new Date("'.$row['thang_name'].' '.$row['ngay'].', '.$row['nam'].' '.$row['gio'].':'.$row['phut'].':'.$row['giay'].'").getTime();
  
   

@@ -164,12 +164,9 @@ VALUE ('$_SESSION[loginOK]','$rice_top','$book_img','$book_name','$category_id',
                     <div class="box-product-add">
                         <button class="btn-add" type="submit" name="them">Lưu lại</button>
                     </div>
-
                 </form>
-
             </div>
         </div>
     </div>
 </body>
-
 </html>
