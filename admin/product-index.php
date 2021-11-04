@@ -18,14 +18,23 @@ include '../config.php';
     <link rel="stylesheet" href="../css/style.css" class="">
     <link rel="stylesheet" href="../css/grid.css" class="">
     <link rel="stylesheet" href="../css/base.css" class="">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" class="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-<script src="../JS/main.js"></script>
+    <script src="../JS/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#table4').DataTable();
+        });
+    </script>
     <div class="main">
         <?php
-         include 'header.php';
+        include 'header.php';
         ?>
 
 
@@ -40,43 +49,39 @@ include '../config.php';
                     <p class="content-title">Sản phẩm</p>
                     <div class="content-product-product">
                         <div class="row">
-                            <?php
-                            $sql = "SELECT *	FROM list_book l, moth m
-                            WHERE l.thang_id=m.thang_id ";
-                            $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    echo 
-                        '<div class="col l-3">
-                        <div class="content-product-box">
-                            <a href="product-details-index.php?id=' . $row['book_id'] . '" class="content-product-book">
-                                <div><img src="../image/product-img/' . $row['book_img'] . '" alt="" class="product-book-img"></div>
-                                <div class="product-book-content">
-                                    <p class="product-book-name">' . $row['book_name'] . '</p>
-                                    <div class="product-book-list">
-                                        <div class="product-book-item">
-                                            <p class="product-book-text">Khởi Điểm </p>
-                                            <p class="product-book-text">' . $row['book_rice'] . 'đ</p>
-                                        </div>
-                                        <div class="product-book-item">
-                                            <p class="product-book-text">Cao nhất </p>
-                                            <p class="product-book-text">' . $row['rice_top'] . 'đ</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="product-book-rice" id="auction-status-' . $row['book_id'] . '">Đang đấu giá</p>
-                                <p class="product-book-rice-close" id="auction-status-close' . $row['book_id'] . '">Hết thời gian</p>
-                                <p style="display: none" id="demo-' . $row['book_id'] . '"></p>
-                            </a>
-                            <div class="edit-delate-product">
-                                   <a href="up-product.php?id=' . $row['book_id'] . '"><i class="edit-delate-category-icon fas fa-edit"></i></a>
-                                   <a href="del-product.php?id=' . $row['book_id'] . '"><i class="edit-delate-category-icon fas fa-times"></i></a>
-                            </div>
-                        </div>
-                        </div>
-                        <script>
 
-  var countDownDate' . $row['book_id'] . ' = new Date("'.$row['thang_name'].' '.$row['ngay'].', '.$row['nam'].' '.$row['gio'].':'.$row['phut'].':'.$row['giay'].'").getTime();
+                            <div class="col l-12">
+                                <div class="content-product-box">
+                                    <table class="table-product table-users" id="table4" style="margin:0 0 20px 0;">
+                                        <thead class="">
+                                            <th class="text-align">Tên sản phẩm</th>
+                                            <th class="text-align">Khởi điểm</th>
+                                            <th class="text-align">Cao nhất</th>
+                                            <th class="text-align">Thời gian</th>
+                                            <th class="text-align">Sửa</th>
+                                            <th class="text-align">Xóa</th>
+                                            <th class="text-align">Chi tiết</th>
+                                        </thead>
+                                        <tbody class="">
+                                            <?php
+                                            $sql = "SELECT *	FROM list_book l, moth m
+                                                WHERE l.thang_id=m.thang_id ";
+                                            $result = mysqli_query($conn, $sql);
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    echo '
+                                                <tr class="">
+                                                    <td class="text-align">' . $row['book_name'] . '</td>
+                                                    <td class="text-align">' . $row['book_rice'] . '</td>
+                                                    <td class="text-align">' . $row['rice_top'] . '</td>
+                                                    <td id="demo-' . $row['book_id'] . '" class="user-auction-time" style="color:red"></td>
+                                                    <td class="text-align"><a href="up-product.php?id=' . $row['book_id'] . '"><i class="edit-delate-category-icon fas fa-edit"></i></a></td>
+                                                    <td class="text-align"><a href="del-product.php?id=' . $row['book_id'] . '"><i class="edit-delate-category-icon fas fa-times"></i></a></td>
+                                                    <td class="text-align"><a href="product-details-index.php?id=' . $row['book_id'] . '"><i class="edit-delate-category-icon fas fa-calendar-week"></i></td>
+                                                </tr>
+                                                <script>
+
+  var countDownDate' . $row['book_id'] . ' = new Date("' . $row['thang_name'] . ' ' . $row['ngay'] . ', ' . $row['nam'] . ' ' . $row['gio'] . ':' . $row['phut'] . ':' . $row['giay'] . '").getTime();
  
   
   var x' . $row['book_id'] . ' = setInterval(function() {
@@ -94,30 +99,33 @@ include '../config.php';
     var seconds' . $row['book_id'] . ' = Math.floor((distance' . $row['book_id'] . ' % (1000 * 60)) / 1000);
  
    
-    document.getElementById("demo-' . $row['book_id'] . '").innerHTML = days' . $row['book_id'] . ' + "Ngày " + hours' . $row['book_id'] . ' + "Giờ "
-    + minutes' . $row['book_id'] . ' + "Phút " + seconds' . $row['book_id'] . ' + "Giây ";
+    document.getElementById("demo-' . $row['book_id'] . '").innerHTML = days' . $row['book_id'] . ' + ":" + hours' . $row['book_id'] . ' + ":"
+    + minutes' . $row['book_id'] . ' + ":" + seconds' . $row['book_id'] . ' + "";
  
   
     if (distance' . $row['book_id'] . ' < 0) {
       clearInterval(x' . $row['book_id'] . ');
-      document.getElementById("demo-' . $row['book_id'] . '").innerHTML = "Thời gian đếm ngược đã kết thúc";
+      document.getElementById("demo-' . $row['book_id'] . '").innerHTML = "Kết thúc";
       document.getElementById("auction-status-' . $row['book_id'] . '").style.display="none";
       document.getElementById("auction-status-close' . $row['book_id'] . '").style.display="block";
     }
   }, 1000);
-</script>
-                        ';
-                                }
-                            }
-                            ?>
+</script>';
+                                                }
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <?php
-    include '../footer.php';
-    ?>
+        include '../footer.php';
+        ?>
     </div>
 </body>
 

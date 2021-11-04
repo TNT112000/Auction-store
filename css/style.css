@@ -845,3 +845,16 @@ td ,th,tr{
     margin: 10px 0 20px 0 !important;
 }
 
+.table-product{
+    border: 1px solid var(--main--color);
+    border-collapse: separate;
+    width: 100%;
+}
+
+#table4_wrapper{
+    width:100%
+}
+
+.text-align{
+    text-align: center;
+}
