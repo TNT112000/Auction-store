@@ -190,6 +190,7 @@ if (isset($_POST['btn-rice'])) {
     </script>
     <?php
     include 'footer.php';
+    include 'send-email-link.php';
     ?>
 </body>
 <script>

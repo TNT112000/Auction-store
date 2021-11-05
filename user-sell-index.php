@@ -40,7 +40,7 @@ include 'config.php';
 
         <div class="add-category-bg">
             <div class="wide grid">
-                <a href="add-product.php" class="add-category">Thêm Sản Phẩm</a>
+                <a href="admin/add-product.php" class="add-category">Thêm Sản Phẩm</a>
             </div>
         </div>
         <div class="content">
@@ -76,9 +76,9 @@ include 'config.php';
                                                     <td class="text-align">' . $row['book_rice'] . '</td>
                                                     <td class="text-align">' . $row['rice_top'] . '</td>
                                                     <td id="demo-' . $row['book_id'] . '" class="user-auction-time" style="color:red"></td>
-                                                    <td class="text-align"><a href="admin/up-product.php?id=' . $row['book_id'] . '"><i class="edit-delate-category-icon fas fa-edit"></i></a></td>
+                                                    <td class="text-align"><a href="user-sell-up.php?id=' . $row['book_id'] . '"><i class="edit-delate-category-icon fas fa-edit"></i></a></td>
                                                     <td class="text-align"><a href="admin/del-product.php?id=' . $row['book_id'] . '"><i class="edit-delate-category-icon fas fa-times"></i></a></td>
-                                                    <td class="text-align"><a href="admin/product-details-index.php?id=' . $row['book_id'] . '"><i class="edit-delate-category-icon fas fa-calendar-week"></i></td>
+                                                    <td class="text-align"><a href="user-sell-details.php?id=' . $row['book_id'] . '"><i class="edit-delate-category-icon fas fa-calendar-week"></i></td>
                                                 </tr>
                                                 <script>
 

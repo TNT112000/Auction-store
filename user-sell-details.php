@@ -1,45 +1,15 @@
-<?php
-session_start();
-if (!isset($_SESSION['loginOK'])) {
-    header("Location:index.php");
-}
+?php
+session_start()
 ?>
 
 <?php
 include 'config.php';
 
-
-?>
-<?php
-$sql = "SELECT l.user_top,l.rice_top,l.ngay,l.gio,l.nam,l.phut,l.giay,l.thang_id,l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,l.book_author,l.book_date,l.book_publish,l.book_title,c.category_name,c.category_id,m.thang_name,m.thang_id	FROM list_book l, list_category c, moth m
-WHERE  l.category_id=c.category_id and l.thang_id=m.thang_id  ";
-$query = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($query);
-if (isset($_POST['btn-rice'])) {
-    if (isset($_SESSION['loginOK'])) {
-        $rice_top = $_POST['rice_top'];
-        if ($rice_top != "") {
-            if ($rice_top > $row['rice_top']) {
-                $sql = "UPDATE list_book SET rice_top='$rice_top',user_top='$_SESSION[loginOK]'  ";
-                $result = mysqli_query($conn, $sql);
-                if ($result > 0) {
-                    echo '<p class="title-rice">Đấu giá thành công<p>';
-                    header("Location: product-details.php?id=$row[book_id]");
-                } else {
-                    echo '<p class="title-rice">Đấu giá thất bại<p>';
-                    header("Location: product-details.php?id=$row[book_id]");
-                }
-            } else {
-                echo '<p class="title-rice">Bạn phải nhập giá cao hơn<p>';
-            }
-        } else {
-            echo '<p class="title-rice">Bạn chưa nhập giá<p>';
-        }
-    } else {
-        header("Location: sign-in.php");
-    }
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,34 +25,34 @@ if (isset($_POST['btn-rice'])) {
 </head>
 
 <body>
-    <script src="JS/main.js"></script>
+    
     <div class="main">
         <?php
         include 'header.php';
         ?>
-        <div class="add-category-bg" style="padding-bottom:100px;">
-            <div class="wide grid">
-                <a href="add-user-product.php" class="add-category" >Thêm Sản Phẩm</a>
-            </div>
-        </div>
-        <?php
-                        $sql = "SELECT l.book_own,l.user_top,l.rice_top,l.ngay,l.gio,l.nam,l.phut,l.giay,l.thang_id,l.book_id,l.book_img,l.book_name,l.category_id,l.book_thickness,l.book_rice,l.book_author,l.book_date,l.book_publish,l.book_title,c.category_name,c.category_id,m.thang_name,m.thang_id	FROM list_book l, list_category c, moth m
-                    WHERE  l.category_id=c.category_id and l.thang_id=m.thang_id  ";
-                        $result = mysqli_query($conn, $sql);
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                if($row['book_own']==$_SESSION['loginOK']){
-        echo'
         
-        <div class="content-details content-details-user">
+        <div class="content-details">
+        
             <div class="wide grid">
-            <div class="edit-delate-product" style="width:300px; margin-bottom:30px; margin-top:0;">
-        <a class="edit-delate-product-details" href="up-user-product.php?id='. $row['book_id'] .'" ><i class="edit-delate-product-details edit-delate-category-icon fas fa-edit" style="margin-right:10px"></i>Chỉnh sửa</a>
-        <a class="edit-delate-product-details" href="del-user-product.php?id='. $row['book_id'] .'" ><i class="edit-delate-category-icon fas fa-times" style="margin-right:10px"></i>Xóa bỏ</a>
-        </div>
+            <div class="edit-delate-product" style="width:300px; margin-bottom:30px;">
+            <?php
+            $sql = "SELECT *	FROM list_book l, list_category c, moth m
+            WHERE  l.category_id=c.category_id and l.thang_id=m.thang_id and l.book_id=$id ";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+            ?>
+                        <a class="edit-delate-product-details" href="up-product-details.php?id=<?php echo $row['book_id'] ?>" ><i class="edit-delate-product-details edit-delate-category-icon fas fa-edit" style="margin-right:10px"></i>Chỉnh sửa</a>
+                        <a class="edit-delate-product-details" href="del-product.php?id=<?php echo $row['book_id'] ?>" ><i class="edit-delate-category-icon fas fa-times" style="margin-right:10px"></i>Xóa bỏ</a>
+                </div>
                 <div class="content-details-box">
                     <div class="row">
-                            <div class="col l-4">
+                        <?php
+                        $sql = "SELECT *	FROM list_book l, list_category c, moth m
+                    WHERE  l.category_id=c.category_id and l.thang_id=m.thang_id and l.book_id=$id ";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_assoc($result);
+                        if (mysqli_num_rows($result) > 0) {
+                            echo '<div class="col l-4">
                             <div class="content-details-img">
                                 <img src="image/product-img/' . $row['book_img'] . '" class=details-img>
                             </div>
@@ -108,17 +78,40 @@ if (isset($_POST['btn-rice'])) {
                                 <p class="content-item">Giá cao nhất</p>
                                 <p class="content-red">' . $row['rice_top'] . 'đ</p>
                                 <p class="content-item">Người trả giá cao nhất</p>
-                                <p class="content-red content-red-stutus">' . $row['user_top'] . '</p>
-                                '; ?>
-
-                        <?php
-                         echo '
-                            </div>
+                                <p class="content-red content-red-stutus">' . $row['user_top'] . '</p>'; ?>
+                            <?php
+                            if (isset($_SESSION['loginOK'])) {
+                                if (isset($_POST['btn-rice'])) {
+                                    $rice_top = $_POST['rice_top'];
+                                    if ($rice_top != "") {
+                                        if ($rice_top > $row['rice_top']) {
+                                            $sql = "UPDATE list_book SET rice_top='$rice_top',user_top='$_SESSION[loginOK]' 
+                                                WHERE book_id=$id ";
+                                            $result = mysqli_query($conn, $sql);
+                                            if ($result > 0) {
+                                                echo '<p class="title-rice">Đấu giá thành công<p>';
+                                            } else {
+                                                echo '<p class="title-rice">Đấu giá thất bại<p>';
+                                            }
+                                        } else {
+                                            echo '<p class="title-rice">Bạn phải nhập giá cao hơn<p>';
+                                        }
+                                    } else {
+                                        echo '<p class="title-rice">Bạn chưa nhập giá<p>';
+                                    }
+                                }
+                            } else {
+                                echo '<p class="title-rice">Bạn chưa đăng nhập<p>';
+                            }
+                            ?>
+                        <?php 
+                            echo'</div>
                         </div>
                         <div class="col l-4">
+                        
                         </div>
                         <div class="col l-5">
-                        <p class="time-auction" id="demo-'. $row['book_id'] .'"></p>
+                        <p class="time-auction" id="demo-' . $row['book_id'] . '"></p>
                         </div>
                         <script>
                         
@@ -147,23 +140,33 @@ if (isset($_POST['btn-rice'])) {
                           if (distance' . $row['book_id'] . ' < 0) {
                             clearInterval(x' . $row['book_id'] . ');
                             document.getElementById("demo-' . $row['book_id'] . '").innerHTML = "Thời gian đấu giá đã kết thúc";
+                            document.getElementById("btn-rice' . $row['book_id'] . '").style.display="none";
+                            document.getElementById("rice-open' . $row['book_id'] . '").style.display="block";
+                            document.getElementById("input-rice' . $row['book_id'] . '").style.display="none";
                           }
                         }, 1000);
-                      </script> 
-                        
-                        
+                      </script> ';
+                        }
+                        ?>
                     </div>
+                    
                 </div>
             </div>
-        </div>';
-    }}}
-    ?>
+        </div>
     </div>
-    
+    <script>
+        function goBack() {
+            history.go();
+        }
+    </script>
     <?php
     include 'footer.php';
     ?>
 </body>
-
+<script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
 
 </html>

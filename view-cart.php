@@ -81,6 +81,7 @@ $sql = "SELECT *	FROM list_book l, list_category c, moth m
         </div>
         <?php
         include 'footer.php';
+        include 'send-email-link.php';  
         ?>
     </div>
 </body>

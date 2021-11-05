@@ -117,6 +117,7 @@ include 'config.php';
         </div>
         <?php
         include 'footer.php';
+        include 'send-email-link.php';
         ?>
     </div>
 </body>
