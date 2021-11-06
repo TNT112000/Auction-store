@@ -107,12 +107,12 @@
     height: 100%;
 }
 .slider-img-item{
+    object-fit: cover;
     width: 100%;
-    height: 607px;
 }
 .slider-text1{
-    top: 180px;
-    left: 70px;
+    top: 20% !important;
+    left: 10% !important;
     position: absolute;
     display: flex;
     align-items: center;
@@ -166,8 +166,8 @@
     height: 30px;
 }
 .slider-text2{
-    top: 300px;
-    left: 105px;
+    top: 40% !important;
+    left: 10% !important;
     position: absolute;
     display: flex;
     align-items: center;
@@ -339,7 +339,7 @@
     margin-bottom: 5px;
     font-size: 20px;
     width: 140px;
-    display: inline-block
+    display: inline-block;
 }
 
 .input-add{
@@ -504,6 +504,7 @@ datalist#datalist option[value] {
     border-bottom: solid 1px var(--main--color);
     border-radius: 6px;
     height: 500px;
+    border: none;
 }
 .content-red-title{
     font-size: 25px;
@@ -777,7 +778,7 @@ td ,th,tr{
     width: 60px;
     height: 60px;
     background-color: orange;
-    top:600px;
+    bottom: 60px;
     right: 30px;
     border-radius: 80px;
     animation: tnt3 linear 0.5s infinite;
@@ -801,7 +802,6 @@ td ,th,tr{
     align-items: center;
     text-decoration: none;
     
-    
 }
 
 .send-email-icon{
@@ -813,7 +813,7 @@ td ,th,tr{
     width: 60px;
     height: 60px;
     background-color: orange;
-    top:600px;
+    bottom: 60px;
     right: 30px;
     border-radius: 80px;
     animation: tnt2 linear 0.5s infinite;
@@ -857,4 +857,49 @@ td ,th,tr{
 
 .text-align{
     text-align: center;
+}
+
+.footer-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.footer-box-ok{
+    display: inline-block;
+}
+.footer-box1{
+    width: 100%;
+}
+
+.content-product{
+    width: 100%;
+}
+.content-product-product{
+    width: 100%;
+    overflow-x: auto;
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter {
+    text-align: unset !important;
+}
+.dataTables_wrapper .dataTables_filter{
+    text-align: unset !important;
+}
+.dataTables_filter{
+    text-align: unset;
+}
+.dataTables_info{
+    display: none;
+    text-align: unset;
+}
+
+.dataTables_wrapper .dataTables_paginate{
+    text-align: unset !important;
+}
+
+.title-ok-log{
+    animation: tnt 5s linear ;
+    color: var(--secondary--color);
+    font-size: 16px;
+    opacity: 0;
 }

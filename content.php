@@ -10,7 +10,7 @@
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<div class="col l-1-5">';
+                            echo '<div class="col m-2 l-1-5 c-2-4 d-3">';
                             echo '<div href="" class="content-category-book">';
                             echo '<a href="cate-product-index.php?id='.$row['category_id'].'" ><img src="image/product-img/' . $row['edit_category_img'] . '" alt="" class="category-book-img" ></a>';
                             echo '<a href="cate-product-index.php?id='.$row['category_id'].'" class="category-book-name">' . $row['category_name'] . '</a>';
@@ -35,7 +35,7 @@
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo
-                    '<div class="col l-3">
+                    '<div class="col l-3 m-4 c-6 d-12">
                         <div class="content-product-box">
                             <a href="product-details.php?id=' . $row['book_id'] . '" class="content-product-book">
                                 <div><img src="image/product-img/' . $row['book_img'] . '" alt="" class="product-book-img"></div>

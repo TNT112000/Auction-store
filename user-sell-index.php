@@ -16,8 +16,10 @@ include 'config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css" class="">
-    <link rel="stylesheet" href="css/grid.css" class="">
     <link rel="stylesheet" href="css/base.css" class="">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" class="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -50,8 +52,8 @@ include 'config.php';
                     <div class="content-product-product">
                         <div class="row">
 
-                            <div class="col l-12">
-                                <div class="content-product-box">
+                            <div class="col l-12 ">
+                                <div class="content-product-box" style="overflow-x:auto;">
                                     <table class="table-product table-users" id="table4" style="margin:0 0 20px 0;">
                                         <thead class="">
                                             <th class="text-align">Tên sản phẩm</th>

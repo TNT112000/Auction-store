@@ -4,7 +4,10 @@
             <div class="navbar-item">
                 <a href="#" class="logo">Auction <span class="logo-item">STORE<span></a>
                 <div class="navbar-menu">
-                    <ul class="navbar-menu-list">
+                    <div class="btn-nav-list" onclick="myShowList()">
+                        <i class="icon-nav-list fas fa-bars"></i>
+                    </div>
+                    <ul class="navbar-menu-list" id="navbar-menu-list">
                         <li class="navbar-menu-item">
                             <a href="index.php" class="navbar-menu-link">Trang chủ</a>
                         </li>
@@ -32,9 +35,9 @@
 
                             $sql = "SELECT * FROM users WHERE user_name='$_SESSION[loginOK]'";
                             $user = mysqli_query($conn, $sql);
-                            if(mysqli_num_rows($user)>0){
-                            $row = mysqli_fetch_assoc($user);
-                            echo '<li class="navbar-menu-item user_list-item">
+                            if (mysqli_num_rows($user) > 0) {
+                                $row = mysqli_fetch_assoc($user);
+                                echo '<li class="navbar-menu-item user_list-item">
                                     <a href="up-pass.php?id=' . $row['user_id'] . '" class="navbar-menu-link navbar-menu-link-item">Đổi mật khẩu</a>
                                 </li>';
                             }
@@ -51,6 +54,7 @@
                         ?>
 
                     </ul>
+
                 </div>
             </div>
         </div>

@@ -1,15 +1,15 @@
 <div class="footer">
     <div class="grid wide">
-        <div class="footer-box">
-            <div class="row">
-                <div class="col l-4 ">
+        <div class="footer-box1">
+            <div class="row" style="width:100%;">
+                <div class="col l-4 m-4 c-0">
                     <div class="footer-box">
                         <div class="footer-box-ok">
                             <a href="#" class="logo">Auction <span class="logo-item">STORE<span></a>
                         </div>
                     </div>
                 </div>
-                <div class="col l-4 ">
+                <div class="col l-4 m-4 c-6">
                     <div class="footer-box">
                         <div class="footer-box-ok">
                             <p class="contact-title">Liên hệ với chúng tôi</p>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col l-4 ">
+                <div class="col l-4 m-4 c-6">
                     <div class="footer-box">
                         <div class="footer-box-ok">
                             <p class="contact-title">Chăm sóc khách hàng</p>

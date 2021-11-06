@@ -15,8 +15,9 @@ include 'config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css" class="">
-    <link rel="stylesheet" href="css/grid.css" class="">
     <link rel="stylesheet" href="css/base.css" class="">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body >
@@ -28,7 +29,6 @@ include 'header.php';
     <style>
         .content{
             margin-top: 55px;
-            height: 100vh;
         }
         .title{
             font-size: 40px;
@@ -64,13 +64,13 @@ include 'header.php';
     <p class="title">Chào mừng bạn đến với trang cá nhân</p>
         <div class="manage">
             <div class="row">
-                <div class="col l-3">
+                <div class="col l-3 m-6 c-12">
                     <div class="manage-item">
                         <p class="manage-title">Sản phẩm đấu giá</p>
                         <a href="user-sell-index.php" class="manage-link">Ấn vào đây</a>
                     </div>
                 </div>
-                <div class="col l-3">
+                <div class="col l-3 m-6 c-12">
                     <div class="manage-item">
                         <p class="manage-title">Người đấu giá</p>
                         <a href="user-sell-auction.php" class="manage-link">Ấn vào đây</a>

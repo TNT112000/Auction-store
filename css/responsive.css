@@ -1,0 +1,458 @@
+.btn-nav-list{
+    display: none;
+}
+@media (max-width:1075px){
+    .manage-title{
+        font-size: 25px !important;
+    }
+}
+@media (max-width:1022px){
+    .btn-nav-list{
+        display: block;
+        float: left;
+        font-size: 40px;
+        position: relative;
+        cursor: pointer;
+    }
+    .navbar-menu-list{
+        display: none;
+        position: absolute;
+        top:75px;
+        right: 0px;
+        background-color: var(--secondary--color);
+        width: 100%;
+    }
+    .logo{
+        font-size: 35px;
+    }
+    .header-icon-img{
+        width: 60px;
+    }
+    .search-input{
+        width: 300px;
+    }
+    .navbar-menu-item{
+        width: 100%;
+    }
+    .slider-text1{
+        width: 250px;
+        height: 40px;
+        top: 100px;
+    }
+    .slider-text-del{
+        font-size: 14px;
+        line-height: 25px;
+        border-right:3px solid white;
+        animation: delete1 2.5s linear infinite ;
+        height: 25px;
+    }
+    @keyframes delete1 {
+        0% {
+            width: 200px;
+        }
+        12.5% {
+            width: 0px;
+        }
+        25% {
+            width: 200px;
+        }
+        
+        100% {
+            width: 200px;
+        }
+    }
+    .slider-text2{
+        width: 180px;
+        height: 40px;
+    }
+    .slider-text-go{
+        font-size: 14px;
+        line-height: 25px;
+        height: 25px;
+    }
+    .introduce-title{
+        font-size: 30px;
+    }
+    .introduce-content{
+        font-size: 40px;
+    }
+    .introduce-content-item{
+        font-size: 20px;
+    }
+    .send-email{
+        width: 50px;
+        height: 50px;
+    }
+    .send-email-2{
+        width: 50px;
+        height: 50px;
+    }
+    .link-send-email{
+        width: 50px;
+        height: 50px;
+    }
+    .send-email-icon{
+        font-size: 30px;
+    }
+    .title{
+        font-size: 30px !important;
+    }
+}
+
+@media (max-width:750px){
+    .btn-nav-list{
+        display: block;
+        float: left;
+        font-size: 30px;
+        position: relative;
+        cursor: pointer;
+    }
+    .navbar-menu-list{
+        display: none;
+        position: absolute;
+        top:55px;
+        right: 0px;
+        background-color: var(--secondary--color);
+        width: 100%;
+    }
+    .logo{
+        font-size: 25px;
+    }
+    .header-icon-img{
+        width: 50px;
+    }
+    .search-input{
+        width: 260px;
+        height: 22px;
+    }
+    .navbar-menu-item{
+        width: 100%;
+    }
+    .title{
+        font-size: 20px;
+    }
+    .slider-text1{
+        display: none;
+        width: 190px;
+        height: 30px;
+        top: 100px;
+    }
+    .slider-text-del{
+        font-size: 13px;
+        line-height: 23px;
+        border-right:3px solid white;
+        animation: delete1 2.5s linear infinite ;
+        height: 23px;
+    }
+    @keyframes delete1 {
+        0% {
+            width: 200px;
+        }
+        12.5% {
+            width: 0px;
+        }
+        25% {
+            width: 200px;
+        }
+        
+        100% {
+            width: 200px;
+        }
+    }
+    .slider-text2{
+        display: none;
+        width: 100px;
+        height: 30px;
+    }
+    .slider-text-go{
+        font-size: 13px;
+        line-height: 23px;
+        height: 23px;
+    }
+    .introduce-title{
+        font-size: 26px;
+    }
+    .introduce-content{
+        font-size: 36px;
+    }
+    .introduce-content-item{
+        font-size: 15px;
+    }
+    .send-email{
+        width: 40px;
+        height: 40px;
+    }
+    .send-email-2{
+        width: 40px;
+        height: 40px;
+    }
+    .link-send-email{
+        width: 40px;
+        height: 40px;
+    }
+    .send-email-icon{
+        font-size: 25px;
+    }
+    .c-2-4{
+        flex-basis: 19.99992%;
+        max-width: 19.99992%;
+    }
+    .search-icon{
+        font-size: 17px;
+    }
+    .search-btn{
+        width: 40px;
+        height: 30px;
+    }
+    .contact-title{
+        font-size: 20px;
+    }
+    .contact{
+        font-size: 14px;
+    }
+}
+
+@media (max-width:550px){
+    .btn-nav-list{
+        display: block;
+        float: left;
+        font-size: 25px;
+        position: relative;
+        cursor: pointer;
+    }
+    .navbar-menu-list{
+        display: none;
+        position: absolute;
+        top:55px;
+        right: 0px;
+        background-color: var(--secondary--color);
+        width: 100%;
+    }
+    .logo{
+        font-size: 20px;
+    }
+    .header-icon-img{
+        width: 40px;
+    }
+    .search-input{
+        width: 150px;
+        height: 20px;
+    }
+    .navbar-menu-item{
+        width: 100%;
+    }
+    .slider-text1{
+        display: none;
+        width: 190px;
+        height: 30px;
+        top: 100px;
+    }
+    .search-cart{
+        height: 100px;
+    }
+    .search-input{
+        font-size: unset;
+    }
+    .slider-text-del{
+        font-size: 13px;
+        line-height: 23px;
+        border-right:3px solid white;
+        animation: delete1 2.5s linear infinite ;
+        height: 23px;
+    }
+    @keyframes delete1 {
+        0% {
+            width: 200px;
+        }
+        12.5% {
+            width: 0px;
+        }
+        25% {
+            width: 200px;
+        }
+        
+        100% {
+            width: 200px;
+        }
+    }
+    .slider-text2{
+        display: none;
+        width: 100px;
+        height: 30px;
+    }
+    .slider-text-go{
+        font-size: 13px;
+        line-height: 23px;
+        height: 23px;
+    }
+    .introduce-title{
+        font-size: 26px;
+    }
+    .introduce-content{
+        padding: 10px 0 10px 0;
+    }
+    .introduce-content{
+        font-size: 36px;
+    }
+    .introduce-content-item{
+        font-size: 15px;
+    }
+    .send-email{
+        bottom: 30px;
+        right:10px;
+        width: 30px;
+        height: 30px;
+    }
+    .send-email-2{
+        bottom: 30px;
+        right:10px;
+        width: 30px;
+        height: 30px;
+    }
+    .link-send-email{
+        width: 30px;
+        height: 30px;
+    }
+    .send-email-icon{
+        font-size: 25px;
+    }
+    .box-product-add{
+        align-items: unset;
+        display: flex;
+        flex-direction: column;
+    }
+    .input-add{
+        width: 250px;
+    }
+    .c-2-4{
+        flex-basis: 19.99992%;
+        max-width: 19.99992%;
+    }
+    .search-icon{
+        font-size: 17px;
+    }
+    .search-btn{
+        width: 40px;
+        height: 30px;
+    }
+    .contact-title{
+        font-size: 20px;
+    }
+    .contact{
+        font-size: 14px;
+    }
+    
+    .row{
+        margin-left: -4px;
+        margin-right: -4px;
+    }
+    .wide
+    {
+        padding: 0 5px;
+    }
+    .d-0{
+        display: none;
+    }
+    .d-1{
+        flex-basis: 8.3333%;
+        max-width:  8.3333%;
+    }
+    .d-2{
+        flex-basis: 16.3337%;
+        max-width: 16.3337%;
+    }
+    .d-3{
+        flex-basis: 25%;
+        max-width: 25%;
+    }
+    .d-4{
+        flex-basis: 33.3333%;
+        max-width: 33.3333%;
+    }
+    .d-5{
+        flex-basis: 41.6667%;
+        max-width: 41.6667%;
+    }
+    .d-6{
+        flex-basis: 50%;
+        max-width: 50%;
+    }
+    .d-7{
+        flex-basis: 58.3333%;
+        max-width:  58.3333%;
+    }
+    .d-8{
+        flex-basis: 66.6667%;
+        max-width: 66.6667%;
+    }
+    .d-9{
+        flex-basis: 75%;
+        max-width: 75%;
+    }
+    .d-10{
+        flex-basis: 83.3333%;
+        max-width: 83.3333%;
+    }
+    .d-11{
+        flex-basis: 91.6667%;
+        max-width: 91.6667%;
+    }
+    .d-12{
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+    .d-0-1{
+        margin-left:  8.3333%;
+    }
+    .d-0-2{
+        margin-left: 16.3337%;
+    }
+    .d-0-3{
+        margin-left: 25%;
+    }
+    .d-0-4{  
+        margin-left: 33.3333%;
+    }
+    .d-0-5{
+        margin-left: 41.6667%;
+    }
+    .d-0-6{
+        margin-left: 50%;
+    }
+    .d-0-7{
+        margin-left:  58.3333%;
+    }
+    .d-0-8{
+        margin-left: 66.6667%;
+    }
+    .d-0-9{
+        margin-left: 75%;
+    }
+    .d-0-10{
+        margin-left: 83.3333%;
+    }
+    .d-0-11{
+        margin-left: 91.6667%;
+    }
+}
+
+@media (max-width:810px){
+    .overlay-container{
+        display: none;
+    }
+    .form-container{
+        width: 100%;
+    } .sign-in-container{
+        width: 100%;
+    }
+    .title-add{
+        font-size: 25px;
+    }
+    .content-title-add{
+        font-size: 16px;
+        width: 100px;
+    }
+    .input-add{
+        font-size: 16px;
+    }
+}
